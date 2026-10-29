@@ -179,6 +179,12 @@ ol {
   margin-bottom: clamp(40px, 7vw, 72px);
 }
 
+.section__lead {
+  max-width: 34em;
+  margin-top: 20px;
+  font-size: clamp(17px, 4.2vw, 21px);
+}
+
 /* Рукописная подпись над заголовком */
 .eyebrow {
   display: block;
@@ -684,5 +690,133 @@ ol {
 
   .fact {
     padding: 28px 24px;
+  }
+}
+
+/* ---------- 3. Темы лекций ---------- */
+.lectures__list {
+  display: grid;
+  gap: 16px;
+}
+
+.lecture {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px 24px 28px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+/* Тонкая янтарная линия сверху карточки */
+.lecture::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--amber-1), transparent);
+  opacity: 0.6;
+}
+
+.lecture__num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--amber-1);
+}
+
+.lecture__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(36px, 9.5vw, 48px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  background: var(--grad-title);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lecture__block {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  color: var(--text-2);
+  font-size: 16px;
+}
+
+.lecture__label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.lecture__gains {
+  display: grid;
+  gap: 10px;
+  color: var(--text);
+}
+
+.lecture__gains li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.lecture__gains li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--amber-1);
+}
+
+.lecture__btn {
+  margin-top: auto;
+  align-self: stretch;
+}
+
+@media (hover: hover) {
+  .lecture:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-4px);
+  }
+
+  .lecture:hover .lecture__btn {
+    border-color: var(--amber-1);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lectures__list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lecture {
+    padding: 40px 32px 32px;
+  }
+
+  .lecture__title {
+    font-size: 44px;
+  }
+
+  /* Строки «Для кого» и «Что получит» во всех карточках — на одной высоте */
+  @supports (grid-template-rows: subgrid) {
+    .lecture {
+      display: grid;
+      grid-row: span 5;
+      grid-template-rows: subgrid;
+      row-gap: 24px;
+    }
   }
 }
