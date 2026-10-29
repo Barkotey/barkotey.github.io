@@ -2,6 +2,7 @@
    BARK — скрипты сайта
    1. Заявки в Telegram с готовым шаблоном
    2. Плавное появление блоков при прокрутке
+   3. Текущий год в подвале
    ========================================================================== */
 
 /* ---------- 1. Заявки в Telegram ----------
@@ -47,3 +48,8 @@ if ('IntersectionObserver' in window) {
 } else {
   revealItems.forEach((el) => el.classList.add('is-visible'));
 }
+
+/* ---------- 3. Текущий год в подвале ---------- */
+document.querySelectorAll('[data-year]').forEach((el) => {
+  el.textContent = new Date().getFullYear();
+});
