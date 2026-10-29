@@ -1254,3 +1254,130 @@ ol {
     padding: 24px;
   }
 }
+
+/* ---------- 8. Контакты ---------- */
+.contacts__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.contacts__photo {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.contacts__photo img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+.contacts__body .section__head {
+  margin-bottom: 32px;
+}
+
+.contacts__cta {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.contacts__list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 72px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line-strong);
+  transition: color 0.2s;
+}
+
+.contact__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--silver-1);
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.contact__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact__icon--text {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.contact__body {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.contact__label {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.contact__value {
+  font-size: 17px;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.contact__arrow {
+  color: var(--text-3);
+  font-size: 20px;
+  transition: transform 0.3s var(--ease), color 0.2s;
+}
+
+@media (hover: hover) {
+  .contact:hover .contact__icon {
+    color: var(--amber-1);
+  }
+
+  .contact:hover .contact__arrow {
+    color: var(--amber-1);
+    transform: translate(3px, -3px);
+  }
+}
+
+.contacts__note {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-3);
+}
+
+@media (min-width: 960px) {
+  .contacts__grid {
+    grid-template-columns: 5fr 7fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  .contacts__photo {
+    position: sticky;
+    top: calc(var(--header-h) + 32px);
+  }
+
+  .contacts__photo img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .contacts__cta {
+    width: auto;
+  }
+}
