@@ -60,6 +60,7 @@
   --amber-4: #513200;
   --grad-amber: linear-gradient(180deg, var(--amber-1) 0%, var(--amber-2) 33%, var(--amber-3) 67%, var(--amber-4) 100%);
   --grad-amber-btn: linear-gradient(180deg, var(--amber-1) 0%, var(--amber-2) 45%, var(--amber-3) 100%);
+  --grad-amber-text: linear-gradient(180deg, var(--amber-1) 0%, var(--amber-2) 100%);
 
   /* Заголовки: белые, книзу уходят в серебро */
   --grad-title: linear-gradient(180deg, #ffffff 35%, var(--silver-1) 100%);
@@ -204,7 +205,9 @@ ol {
 
 /* Слово-акцент внутри заголовка или текста */
 .accent {
-  background: var(--grad-amber);
+  background: var(--grad-amber-text);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -320,6 +323,19 @@ ol {
   transform: none;
 }
 
+/* Первый экран проявляется сразу при загрузке, не дожидаясь прокрутки */
+.intro {
+  animation: intro 1s var(--ease) both;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes intro {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -329,6 +345,10 @@ ol {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .intro {
+    animation: none;
   }
 }
 
@@ -391,3 +411,141 @@ ol {
 /* ==========================================================================
    БЛОКИ СТРАНИЦЫ (по порядку)
    ========================================================================== */
+
+/* ---------- 1. Первый экран ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: var(--header-h);
+  padding-bottom: clamp(32px, 6vw, 72px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 76%;
+  z-index: -2;
+}
+
+.hero__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% 20%;
+  -webkit-mask-image: linear-gradient(180deg, #000 45%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 45%, transparent 100%);
+}
+
+/* Кот-водяной знак */
+.hero__cat {
+  position: absolute;
+  z-index: -1;
+  left: -14%;
+  top: calc(var(--header-h) + 4%);
+  height: 62%;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+}
+
+.hero__roles {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  margin-bottom: 14px;
+}
+
+.hero__name {
+  font-size: clamp(76px, 22vw, 168px);
+  line-height: 0.86;
+  margin-bottom: 20px;
+}
+
+.hero__tagline {
+  max-width: 22em;
+  margin-bottom: 12px;
+}
+
+.hero__tagline .accent {
+  white-space: nowrap;
+}
+
+.hero__sub {
+  max-width: 30em;
+  font-size: 15px;
+  margin-bottom: 28px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero__actions .btn--primary {
+  flex: 1 1 100%;
+}
+
+.hero__actions .btn--ghost {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 600px) {
+  .hero__actions .btn--primary,
+  .hero__actions .btn--ghost {
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero {
+    justify-content: center;
+  }
+
+  .hero__photo {
+    inset: 0 0 0 auto;
+    width: 52%;
+    height: 100%;
+  }
+
+  .hero__photo img {
+    object-position: 50% 25%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, #000 70%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 35%), linear-gradient(180deg, #000 70%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .hero__cat {
+    left: -4%;
+    top: 50%;
+    height: 96%;
+    transform: translateY(-46%);
+    opacity: 0.09;
+  }
+
+  .hero__content {
+    padding-top: 40px;
+  }
+
+  .hero__name {
+    margin-bottom: 28px;
+  }
+
+  .hero__sub {
+    font-size: 17px;
+    margin-bottom: 36px;
+  }
+}

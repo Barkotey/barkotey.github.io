@@ -38,6 +38,32 @@
   </header>
 
   <main id="top">
+
+    <!-- ===================== 1. ПЕРВЫЙ ЭКРАН ===================== -->
+    <section class="hero" aria-label="Алексей Барковский">
+      <div class="hero__photo">
+        <img
+          src="assets/img/hero-800.jpg"
+          srcset="assets/img/hero-800.jpg 800w, assets/img/hero-1400.jpg 1400w"
+          sizes="(min-width: 960px) 50vw, 100vw"
+          width="800" height="1199"
+          alt="Алексей Барковский, психолог и лектор"
+          fetchpriority="high">
+      </div>
+      <span class="hero__cat mark mark--cat-profile" aria-hidden="true"></span>
+
+      <div class="container hero__content">
+        <p class="hero__roles intro">Психолог · Лектор · Коуч</p>
+        <h1 class="hero__name title intro" style="--delay: .1s">Алексей<br>Барковский</h1>
+        <p class="hero__tagline lead intro" style="--delay: .2s">Психолог, который называет вещи <span class="accent">своими именами</span></p>
+        <p class="hero__sub muted intro" style="--delay: .3s">Лекции без воды, эзотерики и «просто полюби себя». Только то, что можно применить завтра утром.</p>
+        <div class="hero__actions intro" style="--delay: .4s">
+          <a class="btn btn--primary" href="https://t.me/barkotey" data-invite>Пригласить спикером</a>
+          <a class="btn btn--ghost" href="#lectures">Темы лекций</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="assets/js/main.js" defer></script>
