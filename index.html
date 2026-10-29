@@ -293,6 +293,82 @@
       </div>
     </section>
 
+    <!-- ===================== 7. СКОРО: КНИГА И ПРОДУКТЫ ===================== -->
+    <section class="section soon" id="soon">
+      <span class="soon__cat mark mark--cat-profile" aria-hidden="true"></span>
+
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Скоро</span>
+          <h2 class="title">Да, я пишу <span class="accent">книгу</span></h2>
+        </div>
+
+        <article class="book reveal">
+          <div class="book__photo">
+            <img
+              src="assets/img/book-800.jpg"
+              srcset="assets/img/book-800.jpg 800w, assets/img/book-1300.jpg 1300w"
+              sizes="(min-width: 960px) 55vw, 100vw"
+              width="800" height="533"
+              alt="Силуэт Алексея Барковского, лицо скрыто воротником"
+              loading="lazy">
+          </div>
+          <div class="book__body">
+            <span class="badge">В работе</span>
+            <p class="book__lead">Нет, она не про позитивное мышление.</p>
+            <p class="muted">Про то, что на самом деле происходит у нас в голове — и что с этим делать. Новости о книге первыми появятся в Telegram-канале: там же лёгкий научпоп с ноткой сарказма.</p>
+            <a class="btn btn--primary" href="https://t.me/barkology" target="_blank" rel="noopener">Подписаться на канал</a>
+          </div>
+        </article>
+
+        <!--
+          ПРОДУКТЫ. Пока карточки закрыты (класс product-card--locked).
+          Когда продукт будет готов:
+          1. уберите слово product-card--locked у карточки;
+          2. замените «Скоро» на цену или «Доступно»;
+          3. в конце карточки, после описания, вставьте кнопку оплаты:
+             <a class="btn btn--primary" href="ССЫЛКА-НА-ОПЛАТУ" target="_blank" rel="noopener">Купить</a>
+        -->
+        <div class="products">
+          <article class="product-card product-card--locked reveal">
+            <div class="product-card__cover" aria-hidden="true">
+              <span class="mark mark--cat-face"></span>
+              <svg class="product-card__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__tag">Скоро</span>
+              <h3 class="product-card__title">Гайды</h3>
+              <p class="product-card__text">Короткие практичные инструкции: что делать, когда накрыло.</p>
+            </div>
+          </article>
+
+          <article class="product-card product-card--locked reveal" style="--delay: .1s">
+            <div class="product-card__cover" aria-hidden="true">
+              <span class="mark mark--cat-face"></span>
+              <svg class="product-card__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__tag">Скоро</span>
+              <h3 class="product-card__title">Лекции в записи</h3>
+              <p class="product-card__text">Смотреть в своём темпе — и возвращаться, когда снова понадобится.</p>
+            </div>
+          </article>
+
+          <article class="product-card product-card--locked reveal" style="--delay: .2s">
+            <div class="product-card__cover" aria-hidden="true">
+              <span class="mark mark--cat-face"></span>
+              <svg class="product-card__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__tag">Скоро</span>
+              <h3 class="product-card__title">Методички</h3>
+              <p class="product-card__text">Рабочие тетради с упражнениями к лекциям.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="assets/js/main.js" defer></script>
