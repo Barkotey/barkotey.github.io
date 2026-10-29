@@ -193,6 +193,7 @@ ol {
   line-height: 1.1;
   color: var(--amber-1);
   margin-bottom: 4px;
+  padding-left: 0.12em;
 }
 
 /* Большой заголовок блока */
@@ -818,5 +819,99 @@ ol {
       grid-template-rows: subgrid;
       row-gap: 24px;
     }
+  }
+}
+
+/* ---------- 4. Видео ---------- */
+.video__frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+/* Настоящее видео из VK */
+.video__frame iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+/* Заглушка, пока видео нет */
+.video__placeholder {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.video__placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  filter: saturate(0.85);
+}
+
+.video__placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 5, 0) 30%, rgba(5, 5, 5, 0.92) 100%);
+}
+
+.video__soon {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  padding: 28px 24px;
+}
+
+.video__badge {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--grad-amber-btn);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.video__text {
+  font-size: clamp(20px, 5vw, 28px);
+  line-height: 1.3;
+  max-width: 18em;
+}
+
+.video__soon .btn--ghost {
+  background: rgba(5, 5, 5, 0.4);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@media (min-width: 768px) {
+  .video__placeholder {
+    aspect-ratio: 16 / 9;
+  }
+
+  .video__placeholder img {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 58%;
+    object-position: 50% 20%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 40%);
+    mask-image: linear-gradient(90deg, transparent 0%, #000 40%);
+  }
+
+  .video__placeholder::after {
+    display: none;
+  }
+
+  .video__soon {
+    inset: 0 auto 0 0;
+    align-content: center;
+    padding: 48px;
   }
 }
