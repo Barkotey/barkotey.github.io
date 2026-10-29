@@ -258,6 +258,41 @@
       </div>
     </section>
 
+    <!-- ===================== 6. ОТЗЫВЫ ===================== -->
+    <!--
+      Пока внутри reviews__list нет ни одного отзыва, весь блок скрыт автоматически.
+
+      КАК ДОБАВИТЬ ОТЗЫВ
+      1. Скопируйте шаблон ниже — всё между строками «ШАБЛОН ↓» и «ШАБЛОН ↑».
+      2. Вставьте его внутрь <div class="reviews__list"> … </div> (ниже, на место строки «сюда»).
+      3. Замените текст, имя и подпись.
+         Фото необязательно: если его нет — удалите строку с <img>.
+         Фото кладите в папку assets/img/reviews/ (квадратное, примерно 200×200).
+
+      ШАБЛОН ↓
+      <figure class="review reveal">
+        <blockquote class="review__text">Текст отзыва без кавычек.</blockquote>
+        <figcaption class="review__author">
+          <img class="review__photo" src="assets/img/reviews/imya.jpg" width="56" height="56" alt="" loading="lazy">
+          <span class="review__name">Имя Фамилия</span>
+          <span class="review__role">Кто это: организатор, слушатель, компания</span>
+        </figcaption>
+      </figure>
+      ШАБЛОН ↑
+    -->
+    <section class="section reviews" id="reviews">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Отзывы</span>
+          <h2 class="title">Что говорят <span class="accent">после</span></h2>
+        </div>
+
+        <div class="reviews__list">
+          <!-- сюда: новые отзывы -->
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <script src="assets/js/main.js" defer></script>
