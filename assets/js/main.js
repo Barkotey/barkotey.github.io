@@ -109,7 +109,7 @@ function measureLectures() {
 }
 
 // «Провал» в iPhone: телефон прилипает посреди экрана, растёт, пока экран не заполнит весь дисплей,
-// внутри появляется визитка BARK. Здесь считаются размеры и включаются точки .is-pinned / .is-dived
+// внутри появляется визитка BARK с подвалом — конец страницы. Здесь считаются размеры и включаются точки .is-pinned / .is-dived
 const dive = document.querySelector('.dive');
 let diveBox = null;
 
@@ -147,11 +147,12 @@ function measureDive() {
   dive.style.setProperty('--stick-top', top + 'px');
   dive.style.setProperty('--oy', originY + 'px');
   dive.style.setProperty('--zmax', (cover * 1.25).toFixed(3));
-  diveBox = { top, trigger: vh * 0.35 };
+  diveBox = { top, trigger: vh * 0.3 };
 }
 
 // Две чёткие точки: 1) телефон встал посреди экрана — ссылки списком, их можно нажимать;
 // 2) прокрутили ещё немного — телефон за секунду «втягивает» в экран, внутри визитка BARK.
+// Страница кончается чуть дальше второй точки (место под прокрутку — 45% экрана в style.css).
 // Сама анимация идёт по времени (style.css), прокрутка только переключает точки.
 function updateDive() {
   if (!diveBox) return;

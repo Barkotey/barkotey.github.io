@@ -460,16 +460,19 @@ body::before {
   }
 }
 
-/* ---------- Шапка ---------- */
+/* ---------- Шапка ----------
+   На телефоне шапка прозрачная: над страницей висят только кот с BARK и кнопка «Пригласить».
+   Пустое место между ними пропускает нажатия к странице. С 960px — полупрозрачная панель с разделами */
 .header {
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
   height: var(--header-h);
-  background: rgba(5, 5, 5, 0.8);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--line);
+  pointer-events: none;
+}
+
+.header a {
+  pointer-events: auto;
 }
 
 .header__inner {
@@ -480,11 +483,13 @@ body::before {
   height: 100%;
 }
 
+/* Лёгкая тень, чтобы логотип читался поверх фото и текста */
 .header__logo {
   display: flex;
   align-items: center;
   gap: 8px;
   min-height: 44px;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
 }
 
 .header__logo .mark--cat {
@@ -500,6 +505,18 @@ body::before {
 }
 
 @media (min-width: 960px) {
+  .header {
+    background: rgba(5, 5, 5, 0.8);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--line);
+    pointer-events: auto;
+  }
+
+  .header__logo {
+    filter: none;
+  }
+
   .header__nav {
     display: flex;
     gap: 28px;
@@ -1770,6 +1787,11 @@ body::before {
 }
 
 /* ---------- 9. Контакты: ссылки внутри «iPhone» ---------- */
+/* Блок последний на странице: снизу его закрывает визитка BARK с подвалом, лишний отступ не нужен */
+.contacts {
+  padding-bottom: 0;
+}
+
 /* Телефон «влетает»: сначала крупный и наклонённый, при прокрутке встаёт ровно (как у Apple) */
 .phone-stage {
   --t: clamp(0, calc(1 - var(--p, 1) / 0.42), 1);
@@ -2003,26 +2025,44 @@ body::before {
   color: var(--text-3);
 }
 
-/* ---------- «Провал» в iPhone и визитка BARK ----------
-   Без анимации: телефон, под ним визитка — огромная надпись BARK и ссылки-значки.
+/* ---------- «Провал» в iPhone и визитка BARK — финал страницы ----------
+   Визитка: огромная полупрозрачная надпись BARK фоном, поверх неё ссылки-значки, внизу подвал.
+   Без анимации визитка просто стоит под телефоном.
    С анимацией main.js ставит .is-live и переключает две точки:
      .is-pinned — телефон встал посреди экрана, ссылки списком, их можно нажимать;
      .is-dived  — прокрутили ещё немного: за ~1,5 секунды экран гаснет, телефон растёт, рамка уезжает за края,
-                  внутри появляется BARK и по одному вылетают значки. Прокрутили назад — всё в обратную сторону. */
+                  визитка занимает весь экран, по одному вылетают значки. Ниже листать некуда — это конец страницы.
+                  Прокрутили назад — всё в обратную сторону. */
 .dive__card {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 1fr auto auto;
   justify-items: center;
-  align-content: center;
-  gap: clamp(24px, 4vw, 40px);
+  gap: clamp(20px, 3vw, 32px);
   padding: clamp(56px, 10vw, 96px) var(--gutter) 0;
 }
 
+/* Сцена: BARK и значки лежат друг на друге, значки сверху */
+.dive__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.dive__stage > * {
+  grid-area: 1 / 1;
+}
+
+/* Цвет как у самой первой версии подвала: серебро, едва проступающее на чёрном */
 .dive__bark {
   width: min(100%, 1120px);
+  opacity: 0.14;
 }
 
 .dive__links {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: clamp(2px, 1.6vw, 36px);
@@ -2080,6 +2120,29 @@ body::before {
   color: var(--text-3);
 }
 
+/* Подвал главной страницы — последняя строка визитки. На телефоне по центру, с 768px — в строку */
+.dive__footer {
+  justify-content: center;
+  width: 100%;
+  max-width: var(--container);
+  border-top: 1px solid var(--line);
+  padding-block: 4px max(8px, env(safe-area-inset-bottom));
+}
+
+.dive__footer .footer__copy {
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .dive__footer {
+    justify-content: flex-start;
+  }
+
+  .dive__footer .footer__copy {
+    margin-right: auto;
+  }
+}
+
 @media (min-width: 768px) {
   .dive__icon {
     width: 64px;
@@ -2097,12 +2160,13 @@ body::before {
   }
 }
 
-/* Сцена: телефон «прилипает» к экрану, ниже — немного места для прокрутки до визитки */
+/* Сцена: телефон «прилипает» к экрану, ниже — немного места для прокрутки до визитки.
+   Это место — конец страницы: долистали до него, и дальше листать некуда */
 .dive.is-live::after {
   content: "";
   display: block;
-  height: 90vh;
-  height: 90svh;
+  height: 45vh;
+  height: 45svh;
 }
 
 .dive.is-live .dive__sticky {
@@ -2142,13 +2206,11 @@ body::before {
   opacity: 0;
 }
 
-/* Визитка лежит поверх телефона и занимает весь экран */
+/* Визитка закреплена на весь экран поверх телефона, сверху отступ под шапку */
 .dive.is-live .dive__card {
-  position: absolute;
-  inset: auto 0 0;
-  height: 100vh;
-  height: 100svh;
-  padding-top: var(--header-h);
+  position: fixed;
+  inset: 0;
+  padding-top: calc(var(--header-h) + 12px);
   visibility: hidden;
   pointer-events: none;
 }
@@ -2157,14 +2219,20 @@ body::before {
   visibility: visible;
 }
 
-.dive.is-dived .dive__link {
+.dive.is-dived .dive__card a {
   pointer-events: auto;
 }
 
+/* BARK занимает всю свободную высоту между шапкой и подвалом (маска сама сохраняет пропорции) */
 .dive.is-live .dive__bark {
-  width: min(100%, calc((100svh - var(--header-h) - 260px) * 218 / 133), 1000px);
+  position: absolute;
+  inset: 0;
+  width: auto;
+  max-width: 1120px;
+  margin-inline: auto;
+  aspect-ratio: auto;
   opacity: 0;
-  transform: scale(1.3);
+  transform: scale(0.85);
 }
 
 .dive.is-live .dive__links li {
@@ -2177,10 +2245,19 @@ body::before {
   opacity: 0;
 }
 
-.dive.is-dived .dive__bark,
+.dive.is-live .dive__footer {
+  opacity: 0;
+}
+
 .dive.is-dived .dive__links li,
-.dive.is-dived .dive__note {
+.dive.is-dived .dive__note,
+.dive.is-dived .dive__footer {
   opacity: 1;
+  transform: none;
+}
+
+.dive.is-dived .dive__bark {
+  opacity: 0.14;
   transform: none;
 }
 
@@ -2202,7 +2279,8 @@ body::before {
 
 .dive.is-animated .dive__bark,
 .dive.is-animated .dive__links li,
-.dive.is-animated .dive__note {
+.dive.is-animated .dive__note,
+.dive.is-animated .dive__footer {
   transition: opacity 0.2s linear, transform 0.25s linear;
 }
 
@@ -2230,18 +2308,20 @@ body::before {
     transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) calc(0.95s + var(--i, 0) * 0.08s);
 }
 
-.dive.is-animated.is-dived .dive__note {
-  transition: opacity 0.5s linear 1.4s;
+.dive.is-animated.is-dived .dive__note,
+.dive.is-animated.is-dived .dive__footer {
+  transition: opacity 0.5s linear 1.3s;
 }
 
-/* ---------- 10. Подвал ---------- */
+/* ---------- 10. Подвал ----------
+   На главной подвал — последняя строка визитки BARK (.dive__footer), отдельный подвал только на privacy.html */
 .footer {
   padding-block: 24px 40px;
   border-top: 1px solid var(--line);
   overflow: hidden;
 }
 
-/* Огромная надпись BARK во всю ширину (на главной она в визитке над подвалом) */
+/* Огромная надпись BARK во всю ширину */
 .footer__bark {
   width: 100%;
   margin-block: 24px 32px;
