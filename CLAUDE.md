@@ -14,7 +14,7 @@
 ## Технологии
 - Только статичные файлы: HTML + CSS + немного JavaScript без библиотек. Никаких фреймворков, сборщиков, npm, сервера.
 - Хостинг: GitHub Pages. Всё, что лежит в репозитории, публикуется.
-  Репозиторий: https://github.com/Barkotey/Publish-repository (ветка `main`) → сайт https://barkotey.github.io/Publish-repository/
+  Репозиторий: https://github.com/Barkotey/barkotey.github.io (ветка `main`) → сайт https://barkotey.github.io/
   Владелец отправляет изменения сам: GitHub Desktop → **Push origin**.
 - Локальный просмотр: `python3 -m http.server 8000` в папке проекта → http://localhost:8000.
   С телефона в той же Wi‑Fi сети: http://<IP-компьютера>:8000 (IP: `ipconfig getifaddr en0`).
@@ -87,7 +87,7 @@ materials/              исходники владельца — НЕ в Git, �
 - **Видео VK:** в блоке `#video` вставить адрес плеера (`https://vk.com/video_ext.php?oid=…&id=…&hash=…`) в `data-video=""`.
   Кнопка «Смотреть лекцию» станет активной; плеер VK грузится только по нажатию.
 - **Продукт (позже):** карточка `.product-card` — тот же шаблон, что у тизеров в блоке `#book`; кнопка ведёт на внешний сервис оплаты.
-- **Превью ссылки:** `og:image`/`og:url` в `index.html` сейчас относительные. После подключения домена — заменить на полный адрес.
+- **Превью ссылки:** `og:image`/`og:url` в `index.html` — полные адреса на https://barkotey.github.io/. После подключения домена — заменить.
 
 ## Юридическое
 - Сайт сам не собирает персональные данные (заявки уходят в Telegram). Если появятся формы, аналитика
