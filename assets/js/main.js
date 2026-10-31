@@ -2,7 +2,7 @@
    BARK — скрипты сайта
    1. Заявки в Telegram с готовым шаблоном
    2. Плавное появление блоков при прокрутке
-   3. Анимации от прокрутки (масштаб, поворот, «загорающийся» текст, стопка лекций)
+   3. Анимации от прокрутки (масштаб, поворот, «загорающийся» текст, стопка лекций, «провал» в iPhone)
    4. Лента отзывов и просмотр отзыва крупно
    5. Видео из VK по кнопке
    6. Текущий год в подвале
@@ -105,6 +105,57 @@ function measureLectures() {
   lectures.forEach((card) => card.style.setProperty('--h', card.offsetHeight + 'px'));
 }
 
+// «Провал» в iPhone: телефон прилипает посреди экрана, растёт, пока экран не заполнит весь дисплей,
+// внутри появляется визитка BARK. Здесь считаются размеры и --d (0…1), остальное — в style.css
+const dive = document.querySelector('.dive');
+let diveBox = null;
+
+function offsetWithin(el, ancestor) {
+  let y = 0;
+  while (el && el !== ancestor) {
+    y += el.offsetTop;
+    el = el.offsetParent;
+  }
+  return y;
+}
+
+function measureDive() {
+  if (!dive) return;
+  const sticky = dive.querySelector('.dive__sticky');
+  const zoom = dive.querySelector('.dive__zoom');
+  const screen = dive.querySelector('.phone__screen');
+  const vw = document.documentElement.clientWidth;
+  const vh = document.documentElement.clientHeight;
+  const header = document.querySelector('.header').offsetHeight;
+  const h = sticky.offsetHeight;
+  const top = Math.min(header, vh - h); // помещается — по центру под шапкой, иначе прилипает низом
+
+  // Точка, вокруг которой растёт телефон, — центр экрана браузера
+  const originY = vh / 2 - top - zoom.offsetTop;
+  const screenTop = offsetWithin(screen, zoom);
+  const screenBottom = screenTop + screen.offsetHeight;
+  // Во сколько раз увеличить, чтобы экран телефона закрыл весь дисплей (и ещё немного — «влетаем» внутрь)
+  const cover = Math.max(
+    vw / screen.offsetWidth,
+    vh / 2 / Math.max(1, originY - screenTop),
+    vh / 2 / Math.max(1, screenBottom - originY)
+  );
+
+  dive.style.setProperty('--stick-top', top + 'px');
+  dive.style.setProperty('--oy', originY + 'px');
+  dive.style.setProperty('--zmax', (cover * 1.5).toFixed(3));
+  diveBox = { top, h };
+}
+
+function updateDive() {
+  if (!diveBox) return;
+  const r = dive.getBoundingClientRect();
+  const d = clamp01((diveBox.top - r.top) / (r.height - diveBox.h));
+  dive.style.setProperty('--d', d.toFixed(4));
+  dive.classList.toggle('is-deep', d > 0.3); // телефон уже огромный — его ссылки не нажимаются
+  dive.classList.toggle('is-arrived', d > 0.5); // визитка показалась — её значки нажимаются
+}
+
 function updateScrollScenes() {
   const vh = window.innerHeight;
   scenes.forEach((el) => {
@@ -113,11 +164,16 @@ function updateScrollScenes() {
     el.style.setProperty('--p', sceneProgress(el, el.dataset.scroll, vh).toFixed(4));
   });
   updateLectureStack();
+  updateDive();
 }
 
 if (!reduceMotion) {
   document.querySelectorAll('[data-scroll="words"]').forEach(splitWords);
   measureLectures();
+  if (dive) {
+    dive.classList.add('is-live');
+    measureDive();
+  }
 
   let ticking = false;
   const requestUpdate = () => {
@@ -130,11 +186,13 @@ if (!reduceMotion) {
   };
 
   window.addEventListener('scroll', requestUpdate, { passive: true });
-  window.addEventListener('resize', () => {
+  const measureAll = () => {
     measureLectures();
+    measureDive();
     requestUpdate();
-  });
-  window.addEventListener('load', measureLectures);
+  };
+  window.addEventListener('resize', measureAll);
+  window.addEventListener('load', measureAll);
   updateScrollScenes();
 }
 

@@ -1716,7 +1716,8 @@ body::before {
 /* ---------- 9. Контакты: ссылки внутри «iPhone» ---------- */
 /* Телефон «влетает»: сначала крупный и наклонённый, при прокрутке встаёт ровно (как у Apple) */
 .phone-stage {
-  --t: clamp(0, calc(1 - var(--p, 1) / 0.42), 1);
+  /* пока идёт «провал» (--d > 0), телефон стоит ровно */
+  --t: clamp(0, calc(1 - var(--p, 1) / 0.42 - var(--d, 0) * 100), 1);
   perspective: 1600px;
   padding-block: 8px 24px;
 }
@@ -1940,10 +1941,182 @@ body::before {
 .contacts__note {
   max-width: 30em;
   margin: 16px auto 0;
+  padding-inline: var(--gutter);
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
   color: var(--text-3);
+}
+
+/* ---------- «Провал» в iPhone и визитка BARK ----------
+   Без анимации: телефон, под ним визитка — огромная надпись BARK и ссылки-значки.
+   С анимацией (main.js ставит .is-live и переменную --d от 0 до 1):
+     0 → 0.65  телефон стоит посреди экрана и растёт, рамка уезжает за края, экран заполняет дисплей;
+     0.12 → 0.37  содержимое экрана гаснет;
+     0.5 → 1   внутри появляется BARK, следом по одному вылетают значки;
+     0.88 → 1  сам телефон растворяется — остаётся визитка, дальше подвал. */
+.dive__card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: center;
+  gap: clamp(24px, 4vw, 40px);
+  padding: clamp(56px, 10vw, 96px) var(--gutter) 0;
+}
+
+.dive__bark {
+  width: min(100%, 1120px);
+}
+
+.dive__links {
+  display: flex;
+  justify-content: center;
+  gap: clamp(2px, 1.6vw, 36px);
+}
+
+.dive__link {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  min-width: 54px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: color 0.2s;
+}
+
+.dive__icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--grad-amber-btn);
+  color: #fff;
+  box-shadow: 0 12px 30px -12px rgba(214, 132, 1, 0.7);
+  transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
+}
+
+.dive__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dive__icon--text {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.dive__link:hover {
+  color: var(--text);
+}
+
+.dive__link:hover .dive__icon {
+  transform: translateY(-3px);
+  filter: brightness(1.12);
+}
+
+/* Сноска в визитке нужна только в анимации: без неё такая же сноска стоит прямо под телефоном */
+.dive__note {
+  display: none;
+  max-width: 30em;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text-3);
+}
+
+@media (min-width: 768px) {
+  .dive__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .dive__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dive__link {
+    min-width: 88px;
+    font-size: 14px;
+  }
+}
+
+/* Сцена: место для прокрутки, телефон «прилипает» к экрану */
+.dive.is-live::after {
+  content: "";
+  display: block;
+  height: 150vh;
+  height: 150svh;
+}
+
+.dive.is-live .dive__sticky {
+  position: sticky;
+  top: var(--stick-top, 0px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  padding-bottom: 12px;
+}
+
+.dive.is-live .dive__zoom {
+  --k: clamp(0, calc(var(--d, 0) / 0.65), 1);
+  position: relative;
+  transform-origin: 50% var(--oy, 50%);
+  scale: calc(1 + (var(--zmax, 1) - 1) * var(--k) * var(--k));
+  opacity: clamp(0, calc((1 - var(--d, 0)) / 0.12), 1);
+}
+
+.dive.is-deep .dive__zoom {
+  pointer-events: none;
+}
+
+.dive.is-live .phone__screen > * {
+  opacity: clamp(0, calc(1 - (var(--d, 0) - 0.12) / 0.25), 1);
+}
+
+.dive.is-live .contacts__note {
+  opacity: clamp(0, calc(1 - var(--d, 0) / 0.1), 1);
+}
+
+/* Визитка лежит поверх телефона и занимает весь экран */
+.dive.is-live .dive__card {
+  position: absolute;
+  inset: auto 0 0;
+  height: 100vh;
+  height: 100svh;
+  padding-top: var(--header-h);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.dive.is-arrived .dive__card {
+  visibility: visible;
+}
+
+.dive.is-live .dive__link {
+  pointer-events: auto;
+}
+
+.dive.is-live .dive__bark {
+  --b: clamp(0, calc((var(--d, 0) - 0.5) / 0.2), 1);
+  width: min(100%, calc((100svh - var(--header-h) - 260px) * 218 / 133), 1000px);
+  opacity: var(--b);
+  transform: scale(calc(1.35 - var(--b) * 0.35));
+}
+
+.dive.is-live .dive__links li {
+  --a: clamp(0, calc((var(--d, 0) - 0.66 - var(--i, 0) * 0.05) / 0.1), 1);
+  opacity: var(--a);
+  transform: translateY(calc((1 - var(--a)) * 64px)) scale(calc(0.5 + var(--a) * 0.5));
+}
+
+.dive.is-live .dive__note {
+  display: block;
+  opacity: clamp(0, calc((var(--d, 0) - 0.9) / 0.08), 1);
 }
 
 /* ---------- 10. Подвал ---------- */
@@ -1953,7 +2126,7 @@ body::before {
   overflow: hidden;
 }
 
-/* Огромная надпись BARK во всю ширину */
+/* Огромная надпись BARK во всю ширину (на главной она в визитке над подвалом) */
 .footer__bark {
   width: 100%;
   margin-block: 24px 32px;

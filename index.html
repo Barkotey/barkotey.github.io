@@ -487,72 +487,96 @@
           <span class="eyebrow eyebrow--long">Следите за обновлениями</span>
           <h2 class="title">Где меня <span class="accent">найти</span></h2>
         </div>
+      </div>
 
-        <!-- Ссылки в «экране iPhone». Время на часах — 22:22 -->
-        <div class="phone-stage" data-scroll>
-          <div class="phone">
-            <div class="phone__screen">
-              <div class="phone__status" aria-hidden="true">
-                <span class="phone__time">22:22</span>
-                <span class="phone__island"></span>
-                <span class="phone__sys">
-                  <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-                  <svg viewBox="0 0 16 12"><path d="M8 2.2c2.4 0 4.6.9 6.2 2.5l1.3-1.4A10.6 10.6 0 0 0 8 .3 10.6 10.6 0 0 0 .5 3.3l1.3 1.4A8.7 8.7 0 0 1 8 2.2Zm0 3.7c1.4 0 2.7.5 3.6 1.4l1.3-1.4A7 7 0 0 0 8 4a7 7 0 0 0-4.9 1.9l1.3 1.4c.9-.9 2.2-1.4 3.6-1.4Zm0 3.6c.5 0 1 .2 1.3.5L8 11.8 6.7 10c.3-.3.8-.5 1.3-.5Z"/></svg>
-                  <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="16" height="8" rx="2"/><path d="M24.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" opacity=".5"/></svg>
-                </span>
+      <!--
+        «ПРОВАЛ» В iPHONE (как у Apple). Телефон со ссылками останавливается посреди экрана, при прокрутке растёт,
+        рамка уезжает за края, экран заполняет весь дисплей — и внутри появляется визитка BARK со значками.
+        Без JavaScript или с отключённой в телефоне анимацией визитка просто стоит под телефоном.
+      -->
+      <div class="dive">
+        <div class="dive__sticky">
+          <div class="dive__zoom">
+            <!-- Ссылки в «экране iPhone». Время на часах — 22:22 -->
+            <div class="phone-stage" data-scroll>
+              <div class="phone">
+                <div class="phone__screen">
+                  <div class="phone__status" aria-hidden="true">
+                    <span class="phone__time">22:22</span>
+                    <span class="phone__island"></span>
+                    <span class="phone__sys">
+                      <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                      <svg viewBox="0 0 16 12"><path d="M8 2.2c2.4 0 4.6.9 6.2 2.5l1.3-1.4A10.6 10.6 0 0 0 8 .3 10.6 10.6 0 0 0 .5 3.3l1.3 1.4A8.7 8.7 0 0 1 8 2.2Zm0 3.7c1.4 0 2.7.5 3.6 1.4l1.3-1.4A7 7 0 0 0 8 4a7 7 0 0 0-4.9 1.9l1.3 1.4c.9-.9 2.2-1.4 3.6-1.4Zm0 3.6c.5 0 1 .2 1.3.5L8 11.8 6.7 10c.3-.3.8-.5 1.3-.5Z"/></svg>
+                      <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="16" height="8" rx="2"/><path d="M24.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" opacity=".5"/></svg>
+                    </span>
+                  </div>
+
+                  <div class="phone__profile">
+                    <img class="phone__avatar" src="assets/img/avatar.jpg" width="240" height="240" alt="" loading="lazy">
+                    <p class="phone__name">Алексей Барковский</p>
+                    <p class="phone__role">Психолог · Спикер · Бизнес-тренер</p>
+                  </div>
+
+                  <ul class="phone__links">
+                    <li style="--i: 0">
+                      <a class="app-row" href="https://www.instagram.com/barkotey/" target="_blank" rel="noopener">
+                        <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".7" fill="currentColor"/></svg></span>
+                        <span class="app-row__text"><span class="app-row__title">Instagram*</span><span class="app-row__sub">@barkotey</span></span>
+                        <span class="app-row__chevron" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                    <li style="--i: 1">
+                      <a class="app-row" href="https://t.me/barkotey_psy" target="_blank" rel="noopener">
+                        <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>
+                        <span class="app-row__text"><span class="app-row__title">Telegram</span><span class="app-row__sub">@barkotey_psy</span></span>
+                        <span class="app-row__chevron" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                    <li style="--i: 2">
+                      <a class="app-row" href="https://t.me/barkology" target="_blank" rel="noopener">
+                        <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 10v4h3l6 4V6L7 10z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>
+                        <span class="app-row__text"><span class="app-row__title">Telegram-канал</span><span class="app-row__sub">@barkology</span></span>
+                        <span class="app-row__chevron" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                    <li style="--i: 3">
+                      <a class="app-row" href="https://vk.com/barkology" target="_blank" rel="noopener">
+                        <span class="app-row__icon app-row__icon--text" aria-hidden="true">VK</span>
+                        <span class="app-row__text"><span class="app-row__title">Паблик ВКонтакте</span><span class="app-row__sub">vk.com/barkology</span></span>
+                        <span class="app-row__chevron" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                    <li style="--i: 4">
+                      <a class="app-row" href="mailto:barkotey.psy@gmail.com?subject=%D0%9F%D1%80%D0%B8%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D1%8C">
+                        <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
+                        <span class="app-row__text"><span class="app-row__title">Почта</span><span class="app-row__sub">barkotey.psy@gmail.com</span></span>
+                        <span class="app-row__chevron" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <a class="btn btn--primary phone__cta" href="https://t.me/barkotey_psy" data-invite>Пригласить спикером</a>
+                  <span class="phone__home" aria-hidden="true"></span>
+                </div>
               </div>
-
-              <div class="phone__profile">
-                <img class="phone__avatar" src="assets/img/avatar.jpg" width="240" height="240" alt="" loading="lazy">
-                <p class="phone__name">Алексей Барковский</p>
-                <p class="phone__role">Психолог · Спикер · Бизнес-тренер</p>
-              </div>
-
-              <ul class="phone__links">
-                <li style="--i: 0">
-                  <a class="app-row" href="https://www.instagram.com/barkotey/" target="_blank" rel="noopener">
-                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".7" fill="currentColor"/></svg></span>
-                    <span class="app-row__text"><span class="app-row__title">Instagram*</span><span class="app-row__sub">@barkotey</span></span>
-                    <span class="app-row__chevron" aria-hidden="true"></span>
-                  </a>
-                </li>
-                <li style="--i: 1">
-                  <a class="app-row" href="https://t.me/barkotey_psy" target="_blank" rel="noopener">
-                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>
-                    <span class="app-row__text"><span class="app-row__title">Telegram</span><span class="app-row__sub">@barkotey_psy</span></span>
-                    <span class="app-row__chevron" aria-hidden="true"></span>
-                  </a>
-                </li>
-                <li style="--i: 2">
-                  <a class="app-row" href="https://t.me/barkology" target="_blank" rel="noopener">
-                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 10v4h3l6 4V6L7 10z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>
-                    <span class="app-row__text"><span class="app-row__title">Telegram-канал</span><span class="app-row__sub">@barkology</span></span>
-                    <span class="app-row__chevron" aria-hidden="true"></span>
-                  </a>
-                </li>
-                <li style="--i: 3">
-                  <a class="app-row" href="https://vk.com/barkology" target="_blank" rel="noopener">
-                    <span class="app-row__icon app-row__icon--text" aria-hidden="true">VK</span>
-                    <span class="app-row__text"><span class="app-row__title">Паблик ВКонтакте</span><span class="app-row__sub">vk.com/barkology</span></span>
-                    <span class="app-row__chevron" aria-hidden="true"></span>
-                  </a>
-                </li>
-                <li style="--i: 4">
-                  <a class="app-row" href="mailto:barkotey.psy@gmail.com?subject=%D0%9F%D1%80%D0%B8%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D1%8C">
-                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
-                    <span class="app-row__text"><span class="app-row__title">Почта</span><span class="app-row__sub">barkotey.psy@gmail.com</span></span>
-                    <span class="app-row__chevron" aria-hidden="true"></span>
-                  </a>
-                </li>
-              </ul>
-
-              <a class="btn btn--primary phone__cta" href="https://t.me/barkotey_psy" data-invite>Пригласить спикером</a>
-              <span class="phone__home" aria-hidden="true"></span>
             </div>
+
+            <p class="contacts__note">* Instagram принадлежит компании Meta, признанной экстремистской и&nbsp;запрещённой в&nbsp;РФ.</p>
+          </div>
+
+          <!-- Визитка: огромная надпись BARK, под ней ссылки-значки в одну строку -->
+          <div class="dive__card">
+            <span class="dive__bark mark mark--bark" role="img" aria-label="BARK"></span>
+            <ul class="dive__links">
+              <li style="--i: 0"><a class="dive__link" href="https://www.instagram.com/barkotey/" target="_blank" rel="noopener"><span class="dive__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".7" fill="currentColor"/></svg></span>Instagram*</a></li>
+              <li style="--i: 1"><a class="dive__link" href="https://t.me/barkotey_psy" target="_blank" rel="noopener"><span class="dive__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>Telegram</a></li>
+              <li style="--i: 2"><a class="dive__link" href="https://t.me/barkology" target="_blank" rel="noopener"><span class="dive__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 10v4h3l6 4V6L7 10z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>Канал</a></li>
+              <li style="--i: 3"><a class="dive__link" href="https://vk.com/barkology" target="_blank" rel="noopener"><span class="dive__icon dive__icon--text" aria-hidden="true">VK</span>Паблик</a></li>
+              <li style="--i: 4"><a class="dive__link" href="mailto:barkotey.psy@gmail.com?subject=%D0%9F%D1%80%D0%B8%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D1%8C"><span class="dive__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>Почта</a></li>
+            </ul>
+            <p class="dive__note">* Instagram принадлежит компании Meta, признанной экстремистской и&nbsp;запрещённой в&nbsp;РФ.</p>
           </div>
         </div>
-
-        <p class="contacts__note">* Instagram принадлежит компании Meta, признанной экстремистской и&nbsp;запрещённой в&nbsp;РФ.</p>
       </div>
     </section>
 
@@ -561,7 +585,6 @@
   <!-- ===================== 10. ПОДВАЛ ===================== -->
   <footer class="footer">
     <div class="container">
-      <span class="footer__bark mark mark--bark" aria-hidden="true"></span>
       <div class="footer__row">
         <span class="footer__monogram mark mark--monogram mark--amber" role="img" aria-label="Монограмма АБ"></span>
         <p class="footer__copy">© <span data-year>2026</span> Алексей Барковский</p>
