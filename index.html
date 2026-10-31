@@ -26,7 +26,7 @@
 
   <link rel="preload" href="assets/fonts/coolvetica-compressed-heavy.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
 
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
@@ -79,7 +79,7 @@
     </section>
 
     <!-- ===================== 2. ОБО МНЕ ===================== -->
-    <section class="section about" id="about" data-scroll>
+    <section class="section about" id="about">
       <span class="glow" style="--x: 85%; --y: 8%" aria-hidden="true"></span>
       <span class="glow glow--silver" style="--x: 10%; --y: 55%" aria-hidden="true"></span>
 
@@ -133,21 +133,24 @@
               <p>Каждый инструмент, о котором я говорю, я сначала проверил на себе. Включая год, когда я отказался от всего, что мешало, и пересобрал себя с нуля.</p>
               <p>Да, я пишу книгу. Нет, она не про позитивное мышление.</p>
               <p class="zone__accent">Если вам нужен спикер, после которого люди думают, спорят и меняют что-то в своей жизни, — пишите.</p>
-              <span class="zone__signature mark mark--signature" role="img" aria-label="Подпись: Алексей Барковский"></span>
+              <div class="zone__sign">
+                <span class="zone__signature mark mark--signature" role="img" aria-label="Подпись: Алексей Барковский"></span>
+                <span class="zone__monogram mark mark--monogram mark--amber" role="img" aria-label="Монограмма АБ"></span>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Бегущая строка-разделитель (украшение) -->
-    <div class="ticker" data-scroll aria-hidden="true">
-      <p class="ticker__row">Кто, если не ты? · Сложное просто · Кайф · Ты решаешь · Кто, если не ты? · Сложное просто · Кайф · Ты решаешь ·</p>
-      <p class="ticker__row ticker__row--outline">Кто, если не я? · Ты главный · Кто, если не я? · Ты главный · Кто, если не я? · Ты главный ·</p>
+    <!-- Бегущая строка-разделитель (украшение). Каждая строка — одна и та же фраза дважды подряд: так она едет по кругу без шва -->
+    <div class="ticker" aria-hidden="true">
+      <p class="ticker__row">Кто, если не ты? · Сложное просто · Кайф · Ты решаешь · Кто, если не ты? · Сложное просто · Кайф · Ты решаешь ·&nbsp;</p>
+      <p class="ticker__row ticker__row--outline">Кто, если не я? · Ты главный · Кто, если не я? · Ты главный · Кто, если не я? · Ты главный · Кто, если не я? · Ты главный ·&nbsp;</p>
     </div>
 
     <!-- ===================== 3. ТЕМЫ ЛЕКЦИЙ ===================== -->
-    <section class="section lectures" id="lectures" data-scroll>
+    <section class="section lectures" id="lectures" data-scroll="bg">
       <span class="glow" style="--x: 15%; --y: 30%" aria-hidden="true"></span>
       <span class="watermark watermark--right mark mark--cat" aria-hidden="true"></span>
 
@@ -221,7 +224,7 @@
     </section>
 
     <!-- ===================== 4. ФОРМАТЫ ВЫСТУПЛЕНИЙ ===================== -->
-    <section class="section formats" id="formats" data-scroll>
+    <section class="section formats" id="formats">
       <span class="glow" style="--x: 90%; --y: 60%" aria-hidden="true"></span>
 
       <div class="container">
@@ -271,7 +274,7 @@
     </section>
 
     <!-- ===================== 5. ВИДЕО ===================== -->
-    <section class="section video" id="video" data-scroll>
+    <section class="section video" id="video">
       <span class="glow glow--silver" style="--x: 80%; --y: 40%" aria-hidden="true"></span>
 
       <div class="container">
@@ -320,27 +323,28 @@
       1. Сохраните скриншот в папку assets/img/reviews/ под следующим номером, например review-6.jpg
          (уменьшить до 900 px в ширину: sips --resampleWidth 900 -s format jpeg -s formatOptions 72 исходник --out assets/img/reviews/review-6.jpg).
       2. Скопируйте любую строку <li>…</li> внутри <ul class="reviews__track"> и поменяйте в ней
-         номер картинки, её размеры (width/height) и текст в alt — его читают незрячие посетители и поисковики.
+         имя на плашке (review__name), номер картинки, её размеры (width/height)
+         и текст в alt — его читают незрячие посетители и поисковики.
       Лента сама подстроится под количество отзывов.
     -->
-    <section class="section reviews" id="reviews" data-scroll>
+    <section class="section reviews" id="reviews">
       <span class="glow" style="--x: 50%; --y: 55%" aria-hidden="true"></span>
 
       <div class="container">
         <div class="section__head reveal">
           <span class="eyebrow">„Спасибо“</span>
           <h2 class="title">То, что говорят <span class="accent">после</span></h2>
-          <p class="section__lead muted">Настоящие сообщения от&nbsp;клиентов, без имён. Нажмите на&nbsp;отзыв, чтобы прочитать его крупно.</p>
+          <p class="section__lead muted">Настоящие сообщения от&nbsp;клиентов, имена изменены. Нажмите на&nbsp;отзыв, чтобы прочитать его крупно.</p>
         </div>
       </div>
 
       <div class="reviews__marquee reveal">
         <ul class="reviews__track">
-          <li><button class="review" type="button"><img src="assets/img/reviews/review-1.jpg" width="900" height="318" alt="Отзыв: «Спасибо тебе, очень многие моменты стали понятны. Главное понял для себя, что и как хочу делать дальше. У тебя очень круто получается донести суть и заставить задуматься. Это прям очень помогает»" loading="lazy"></button></li>
-          <li><button class="review" type="button"><img src="assets/img/reviews/review-2.jpg" width="900" height="560" alt="Отзыв: «Слушай, сначала было как-то непонятно и страшно — первый раз у психолога, вообще без понятия, что делать будем. А потом поехало. Я иногда не знала, зачем мы это делаем и в чём соль, но сейчас, спустя три месяца, хочу сказать тебе огромное спасибо. Я полностью достигла своих целей, наконец-то нашла любящего мужчину и получила повышение на работе. Наша работа однозначно пошла на пользу»" loading="lazy"></button></li>
-          <li><button class="review" type="button"><img src="assets/img/reviews/review-3.jpg" width="900" height="439" alt="Отзыв: «Честно, мне по-настоящему помогли консультации, очень здорово, что ты не даёшь совет, а направляешь к ответу, чтобы я сама приняла решение! Отдельное спасибо за то, что ты нашёл время созвониться ещё раз, именно после второго созвона у меня „упал камень с души“! Спасибо тебе большое!»" loading="lazy"></button></li>
-          <li><button class="review" type="button"><img src="assets/img/reviews/review-4.jpg" width="900" height="554" alt="Отзыв: «Пишу тебе поделиться радостью! Я наконец-то решила вопрос с сестрой! Это такое облегчение, что слов нет. Как ты и говорил, самое сложное — решиться. А на деле всё прошло спокойно, мы поговорили, она меня услышала и уехала. Спасибо тебе большое! Сама я бы точно тянула до последнего и не решилась бы»" loading="lazy"></button></li>
-          <li><button class="review" type="button"><img src="assets/img/reviews/review-5.jpg" width="900" height="720" alt="Отзыв: «Лёша! У нас была с тобой всего одна консультация, но она перевернула мне мозг. Я стала отслеживать своё поведение, что я делаю не так, стала разговаривать со своим парнем, говорить о том, чего я хочу, что мне важно! Съехала от родителей в конце концов! Очень благодарна тебе! Признаюсь, поначалу я думала, что это всё фигня, но сейчас я понимаю, что это реально работает»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><span class="review__name"><span>Максим</span></span><img src="assets/img/reviews/review-1.jpg" width="900" height="318" alt="Отзыв: «Спасибо тебе, очень многие моменты стали понятны. Главное понял для себя, что и как хочу делать дальше. У тебя очень круто получается донести суть и заставить задуматься. Это прям очень помогает»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><span class="review__name"><span>Анна</span></span><img src="assets/img/reviews/review-2.jpg" width="900" height="560" alt="Отзыв: «Слушай, сначала было как-то непонятно и страшно — первый раз у психолога, вообще без понятия, что делать будем. А потом поехало. Я иногда не знала, зачем мы это делаем и в чём соль, но сейчас, спустя три месяца, хочу сказать тебе огромное спасибо. Я полностью достигла своих целей, наконец-то нашла любящего мужчину и получила повышение на работе. Наша работа однозначно пошла на пользу»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><span class="review__name"><span>Екатерина</span></span><img src="assets/img/reviews/review-3.jpg" width="900" height="439" alt="Отзыв: «Честно, мне по-настоящему помогли консультации, очень здорово, что ты не даёшь совет, а направляешь к ответу, чтобы я сама приняла решение! Отдельное спасибо за то, что ты нашёл время созвониться ещё раз, именно после второго созвона у меня „упал камень с души“! Спасибо тебе большое!»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><span class="review__name"><span>Мария</span></span><img src="assets/img/reviews/review-4.jpg" width="900" height="554" alt="Отзыв: «Пишу тебе поделиться радостью! Я наконец-то решила вопрос с сестрой! Это такое облегчение, что слов нет. Как ты и говорил, самое сложное — решиться. А на деле всё прошло спокойно, мы поговорили, она меня услышала и уехала. Спасибо тебе большое! Сама я бы точно тянула до последнего и не решилась бы»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><span class="review__name"><span>Ольга</span></span><img src="assets/img/reviews/review-5.jpg" width="900" height="720" alt="Отзыв: «Лёша! У нас была с тобой всего одна консультация, но она перевернула мне мозг. Я стала отслеживать своё поведение, что я делаю не так, стала разговаривать со своим парнем, говорить о том, чего я хочу, что мне важно! Съехала от родителей в конце концов! Очень благодарна тебе! Признаюсь, поначалу я думала, что это всё фигня, но сейчас я понимаю, что это реально работает»" loading="lazy"></button></li>
         </ul>
       </div>
 
@@ -351,9 +355,9 @@
     </section>
 
     <!-- ===================== 7. КНИГА И ПРОДУКТЫ ===================== -->
-    <section class="section book" id="book" data-scroll>
+    <section class="section book" id="book" data-scroll="bg">
       <span class="glow" style="--x: 30%; --y: 22%" aria-hidden="true"></span>
-      <span class="watermark watermark--left mark mark--cat" aria-hidden="true"></span>
+      <span class="watermark watermark--right mark mark--cat" aria-hidden="true"></span>
 
       <div class="container">
         <div class="section__head reveal">
@@ -454,7 +458,7 @@
     </section>
 
     <!-- ===================== 8. TELEGRAM-КАНАЛ ===================== -->
-    <section class="section channel" id="channel" data-scroll>
+    <section class="section channel" id="channel">
       <span class="glow glow--silver" style="--x: 75%; --y: 30%" aria-hidden="true"></span>
 
       <div class="container">
@@ -464,7 +468,7 @@
         </div>
 
         <a class="channel__card reveal" href="https://t.me/barkology" target="_blank" rel="noopener">
-          <img class="channel__photo" src="assets/img/channel.jpg" width="800" height="1199" alt="Алексей Барковский на фоне неба" loading="lazy">
+          <img class="channel__photo" src="assets/img/channel.jpg" width="800" height="1000" alt="Алексей Барковский на фоне неба" loading="lazy">
           <span class="channel__body">
             <span class="channel__head">
               <span class="channel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>
@@ -478,7 +482,7 @@
     </section>
 
     <!-- ===================== 9. КОНТАКТЫ ===================== -->
-    <section class="section contacts" id="contacts" data-scroll>
+    <section class="section contacts" id="contacts" data-scroll="bg">
       <span class="glow" style="--x: 50%; --y: 60%" aria-hidden="true"></span>
       <span class="watermark watermark--right mark mark--cat" aria-hidden="true"></span>
 
@@ -593,6 +597,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=5" defer></script>
 </body>
 </html>

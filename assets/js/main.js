@@ -58,7 +58,9 @@ if ('IntersectionObserver' in window) {
    Каждый элемент с data-scroll получает переменную --p от 0 до 1. Что с ней делать — решает style.css.
    data-scroll         — 0: элемент показался снизу экрана, 1: ушёл за верх;
    data-scroll="top"   — 0: элемент у верха экрана, 1: полностью ушёл вверх (первый экран);
-   data-scroll="words" — текст разбивается на слова, и они «загораются» по очереди. */
+   data-scroll="words" — текст разбивается на слова, и они «загораются» по очереди;
+   data-scroll="bg"    — как обычный, но --p получают только коты-водяные знаки внутри блока
+                         (если ставить --p на весь блок, браузер пересчитывает все его элементы — на iPhone это тормозит). */
 const scenes = [...document.querySelectorAll('[data-scroll]')];
 const lectures = [...document.querySelectorAll('.lecture')];
 const stackMedia = window.matchMedia('(max-width: 1023px)');
@@ -97,7 +99,8 @@ function updateLectureStack() {
       const b = next.getBoundingClientRect();
       cover = clamp01(1 - (b.top - a.top) / a.height);
     }
-    card.style.setProperty('--cover', cover.toFixed(3));
+    const text = cover.toFixed(3);
+    if (card.style.getPropertyValue('--cover') !== text) card.style.setProperty('--cover', text);
   });
 }
 
@@ -106,7 +109,7 @@ function measureLectures() {
 }
 
 // «Провал» в iPhone: телефон прилипает посреди экрана, растёт, пока экран не заполнит весь дисплей,
-// внутри появляется визитка BARK. Здесь считаются размеры и --d (0…1), остальное — в style.css
+// внутри появляется визитка BARK. Здесь считаются размеры и включаются точки .is-pinned / .is-dived
 const dive = document.querySelector('.dive');
 let diveBox = null;
 
@@ -143,17 +146,29 @@ function measureDive() {
 
   dive.style.setProperty('--stick-top', top + 'px');
   dive.style.setProperty('--oy', originY + 'px');
-  dive.style.setProperty('--zmax', (cover * 1.5).toFixed(3));
-  diveBox = { top, h };
+  dive.style.setProperty('--zmax', (cover * 1.25).toFixed(3));
+  diveBox = { top, trigger: vh * 0.35 };
 }
 
+// Две чёткие точки: 1) телефон встал посреди экрана — ссылки списком, их можно нажимать;
+// 2) прокрутили ещё немного — телефон за секунду «втягивает» в экран, внутри визитка BARK.
+// Сама анимация идёт по времени (style.css), прокрутка только переключает точки.
 function updateDive() {
   if (!diveBox) return;
-  const r = dive.getBoundingClientRect();
-  const d = clamp01((diveBox.top - r.top) / (r.height - diveBox.h));
-  dive.style.setProperty('--d', d.toFixed(4));
-  dive.classList.toggle('is-deep', d > 0.3); // телефон уже огромный — его ссылки не нажимаются
-  dive.classList.toggle('is-arrived', d > 0.5); // визитка показалась — её значки нажимаются
+  const passed = diveBox.top - dive.getBoundingClientRect().top; // сколько прокрутили с момента, как телефон встал
+  dive.classList.toggle('is-pinned', passed >= 0);
+  if (passed > diveBox.trigger) dive.classList.add('is-dived');
+  else if (passed < diveBox.trigger * 0.5) dive.classList.remove('is-dived'); // запас, чтобы на границе не мигало
+}
+
+// Ставим --p, только если значение изменилось: каждая запись заставляет браузер пересчитать стили
+const lastProgress = new Map();
+
+function setProgress(el, value) {
+  const text = value.toFixed(3);
+  if (lastProgress.get(el) === text) return;
+  lastProgress.set(el, text);
+  el.style.setProperty('--p', text);
 }
 
 function updateScrollScenes() {
@@ -161,7 +176,10 @@ function updateScrollScenes() {
   scenes.forEach((el) => {
     const r = el.getBoundingClientRect();
     if (r.bottom < -vh || r.top > vh * 2) return; // далеко от экрана — не считаем
-    el.style.setProperty('--p', sceneProgress(el, el.dataset.scroll, vh).toFixed(4));
+    const mode = el.dataset.scroll;
+    const p = sceneProgress(el, mode, vh);
+    if (mode === 'bg') el.querySelectorAll(':scope > .watermark').forEach((mark) => setProgress(mark, p));
+    else setProgress(el, p);
   });
   updateLectureStack();
   updateDive();
@@ -173,6 +191,8 @@ if (!reduceMotion) {
   if (dive) {
     dive.classList.add('is-live');
     measureDive();
+    // Плавные переходы — только после первой отрисовки, чтобы при загрузке ничего не проигрывалось само
+    setTimeout(() => dive.classList.add('is-animated'), 300);
   }
 
   let ticking = false;
