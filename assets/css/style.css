@@ -21,6 +21,12 @@
   font-display: swap;
 }
 @font-face {
+  font-family: "Soyuz Grotesk";
+  src: url("../fonts/soyuz-grotesk-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
   font-family: "Inter";
   src: url("../fonts/inter-cyrillic.woff2") format("woff2");
   font-weight: 400 700;
@@ -83,6 +89,7 @@
   --font-display: "Coolvetica", "Arial Narrow", Impact, sans-serif;
   --font-text: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-script: "Shlapak", "Segoe Script", cursive;
+  --font-accent: "Soyuz Grotesk", var(--font-display); /* акцентный: бегущая строка, номера лекций */
 
   /* Размеры */
   --container: 1120px;
@@ -184,12 +191,13 @@ ol {
   overflow-x: clip;
 }
 
-/* Шапка блока: огромная рукописная подпись, поверх неё — заголовок. Всё по центру */
+/* Шапка блока: рукописная пометка у левого края заголовка, сам заголовок — по центру.
+   Ширина шапки = ширина заголовка, поэтому пометка всегда стоит рядом с ним */
 .section__head {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
   text-align: center;
   margin-bottom: clamp(32px, 6vw, 56px);
 }
@@ -200,27 +208,31 @@ ol {
   font-size: clamp(17px, 4.2vw, 21px);
 }
 
-/* Рукописная подпись: крупнее заголовка и лежит под ним, как фон */
+/* Рукописная пометка перед блоком — как подпись от руки над заголовком.
+   Начинается от левого края заголовка (width: 0 — пометка не раздвигает шапку, текст просто идёт вправо).
+   Отступ снизу — под длинные хвосты букв «р», «д», «у», чтобы они не задевали заголовок */
 .eyebrow {
-  position: relative;
-  z-index: -1;
+  justify-self: start;
   display: block;
+  width: 0;
   font-family: var(--font-script);
-  font-size: clamp(92px, 26vw, 220px);
-  line-height: 0.9;
+  font-size: clamp(40px, 10vw, 64px);
+  line-height: 1.15;
   white-space: nowrap;
+  text-align: left;
   color: var(--amber-1);
-  opacity: 0.45;
-  margin-bottom: -0.22em;
+  rotate: -5deg;
+  transform-origin: 0 100%;
+  margin-bottom: 0.48em;
   pointer-events: none;
 }
 
+/* Длинная пометка в две строки */
 .eyebrow--long {
-  font-size: clamp(58px, 15vw, 132px);
-  line-height: 0.95;
+  width: auto;
+  max-width: 7em;
   white-space: normal;
-  max-width: 9em;
-  margin-bottom: -0.16em;
+  line-height: 1.4;
 }
 
 /* Большой заголовок блока */
@@ -703,7 +715,7 @@ body::before {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: var(--focus, 50% 22%); /* у отдельного фото можно задать style="--focus: 50% 0%" */
 }
 
 .zone__body {
@@ -714,10 +726,12 @@ body::before {
   color: var(--text-2);
 }
 
-/* Рукописный заголовок части — по центру, наезжает на нижний край фото */
+/* Рукописный заголовок части — по центру, наезжает на нижний край фото.
+   Отступ снизу — под хвосты букв «р», «з», чтобы они не задевали текст */
 .zone__label {
   position: relative;
   margin-top: -0.5em;
+  margin-bottom: 0.5em;
   font-family: var(--font-script);
   font-weight: 400;
   font-size: clamp(54px, 14vw, 88px);
@@ -725,6 +739,11 @@ body::before {
   text-align: center;
   color: var(--amber-1);
   text-shadow: 0 4px 30px rgba(5, 5, 5, 0.9);
+}
+
+/* Для слов с «з» или «у»: у этих букв хвост ещё длиннее */
+.zone__label--deep {
+  margin-bottom: 0.85em;
 }
 
 .zone__accent {
@@ -755,25 +774,25 @@ body::before {
 
   .zone__label {
     margin-top: 0;
-    margin-bottom: 4px;
   }
 }
 
-/* Бегущая строка между блоками: двигается от прокрутки */
+/* Бегущая строка между блоками: двигается от прокрутки.
+   Шрифт Soyuz Grotesk — «однорегистровый»: заглавные и строчные в нём выглядят одинаково (т как m, л как Λ) */
 .ticker {
   overflow: hidden;
   padding-block: 8px;
-  font-family: var(--font-display);
-  font-weight: 900;
+  font-family: var(--font-accent);
+  font-weight: 700;
   text-transform: uppercase;
-  line-height: 1;
+  line-height: 1.1;
   white-space: nowrap;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
 .ticker__row {
-  font-size: clamp(56px, 15vw, 150px);
+  font-size: clamp(46px, 12vw, 120px);
   width: max-content;
   background: var(--grad-title);
   -webkit-background-clip: text;
@@ -829,7 +848,8 @@ body::before {
 }
 
 .lecture__num {
-  font-family: var(--font-display);
+  font-family: var(--font-accent);
+  font-weight: 700;
   font-size: 22px;
   line-height: 1;
   letter-spacing: 0.06em;
@@ -944,7 +964,72 @@ body::before {
   }
 }
 
-/* ---------- 4. Видео ---------- */
+/* ---------- 4. Форматы выступлений ---------- */
+.formats__list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.format {
+  display: grid;
+  gap: 6px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.format__meta {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber-1);
+}
+
+.format__title {
+  --lh: 1;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(34px, 9vw, 48px);
+  line-height: var(--lh);
+  text-transform: uppercase;
+  background: var(--grad-title) 0 0 / 100% calc(var(--lh) * 1em) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.format__text {
+  color: var(--text-2);
+  max-width: 34em;
+}
+
+.format--bonus .format__title {
+  background: var(--grad-amber-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.formats__cta {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+  margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+  .format {
+    grid-template-columns: 160px 1fr 1.4fr;
+    gap: 32px;
+    align-items: baseline;
+    padding-block: 30px;
+  }
+
+  .formats__cta {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+/* ---------- 5. Видео ---------- */
 .video__frame {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -1061,71 +1146,6 @@ body::before {
   }
 }
 
-/* ---------- 5. Форматы выступлений ---------- */
-.formats__list {
-  border-top: 1px solid var(--line-strong);
-}
-
-.format {
-  display: grid;
-  gap: 6px;
-  padding-block: 24px;
-  border-bottom: 1px solid var(--line-strong);
-}
-
-.format__meta {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--amber-1);
-}
-
-.format__title {
-  --lh: 1;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(34px, 9vw, 48px);
-  line-height: var(--lh);
-  text-transform: uppercase;
-  background: var(--grad-title) 0 0 / 100% calc(var(--lh) * 1em) repeat-y;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.format__text {
-  color: var(--text-2);
-  max-width: 34em;
-}
-
-.format--bonus .format__title {
-  background: var(--grad-amber-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.formats__cta {
-  display: grid;
-  gap: 20px;
-  justify-items: start;
-  margin-top: 40px;
-}
-
-@media (min-width: 768px) {
-  .format {
-    grid-template-columns: 160px 1fr 1.4fr;
-    gap: 32px;
-    align-items: baseline;
-    padding-block: 30px;
-  }
-
-  .formats__cta {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
-}
-
 /* Фото-вставка с цитатой на всю ширину */
 .interlude {
   position: relative;
@@ -1169,7 +1189,7 @@ body::before {
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  padding-block: 22px 10px;
+  padding-block: 12px 10px;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
@@ -1223,7 +1243,7 @@ body::before {
   }
 }
 
-/* Карточка отзыва: серебряная рамка, янтарная кавычка, скриншот внутри */
+/* Карточка отзыва: серебряная рамка, скриншот внутри */
 .review {
   position: relative;
   display: block;
@@ -1236,25 +1256,6 @@ body::before {
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
   cursor: zoom-in;
   transition: transform 0.4s var(--ease);
-}
-
-.review::before {
-  content: "“";
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--grad-amber-btn);
-  font-family: var(--font-display);
-  font-size: 38px;
-  line-height: 1;
-  padding-top: 14px;
-  color: #fff;
-  box-shadow: 0 6px 20px -6px rgba(214, 132, 1, 0.7);
 }
 
 .review img {
@@ -1947,15 +1948,15 @@ body::before {
 
 /* ---------- 10. Подвал ---------- */
 .footer {
-  padding-block: 16px 36px;
+  padding-block: 24px 40px;
   border-top: 1px solid var(--line);
   overflow: hidden;
 }
 
 /* Огромная надпись BARK во всю ширину */
 .footer__bark {
-  width: min(100%, 720px);
-  margin: 20px auto 28px;
+  width: 100%;
+  margin-block: 24px 32px;
   opacity: 0.14;
 }
 
