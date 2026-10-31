@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Алексей Барковский — психолог и лектор</title>
+  <title>Алексей Барковский — психолог, спикер, бизнес-тренер</title>
   <meta name="description" content="Психолог, который называет вещи своими именами. Лекции без воды и эзотерики: о смыслах, трудностях и умении быть услышанным. Пригласить спикером на мероприятие.">
   <meta name="theme-color" content="#050505">
   <meta name="color-scheme" content="dark">
 
   <!-- Превью ссылки в Telegram, VK и мессенджерах.
-       После публикации замените «assets/img/og-image.jpg» и адрес в og:url на полный адрес сайта,
+       После подключения домена замените «assets/img/og-image.jpg» и адрес в og:url на полный адрес сайта,
        например https://barkovsky.ru/assets/img/og-image.jpg -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta property="og:site_name" content="BARK — Алексей Барковский">
-  <meta property="og:title" content="Алексей Барковский — психолог и лектор">
+  <meta property="og:title" content="Алексей Барковский — психолог, спикер, бизнес-тренер">
   <meta property="og:description" content="Психолог, который называет вещи своими именами. Лекции без воды и эзотерики. Пригласить спикером на мероприятие.">
   <meta property="og:image" content="assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -37,97 +37,121 @@
   <header class="header">
     <div class="container header__inner">
       <a class="header__logo" href="#top" aria-label="BARK — наверх">
-        <span class="mark mark--cat-face" aria-hidden="true"></span>
+        <span class="mark mark--cat" aria-hidden="true"></span>
         <span class="mark mark--bark" aria-hidden="true"></span>
       </a>
       <nav class="header__nav" aria-label="Разделы сайта">
         <a href="#about">Обо мне</a>
         <a href="#lectures">Лекции</a>
         <a href="#video">Видео</a>
-        <a href="#formats">Форматы</a>
-        <a href="#soon">Книга</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#book">Книга</a>
         <a href="#contacts">Контакты</a>
       </nav>
-      <a class="btn btn--primary btn--small" href="https://t.me/barkotey" data-invite>Пригласить</a>
+      <a class="btn btn--primary btn--small" href="https://t.me/barkotey_psy" data-invite>Пригласить</a>
     </div>
   </header>
 
   <main id="top">
 
     <!-- ===================== 1. ПЕРВЫЙ ЭКРАН ===================== -->
-    <section class="hero" aria-label="Алексей Барковский">
+    <section class="hero" data-scroll="top" aria-label="Алексей Барковский">
       <div class="hero__photo">
         <img
           src="assets/img/hero-800.jpg"
           srcset="assets/img/hero-800.jpg 800w, assets/img/hero-1400.jpg 1400w"
           sizes="(min-width: 960px) 50vw, 100vw"
           width="800" height="1199"
-          alt="Алексей Барковский, психолог и лектор"
+          alt="Алексей Барковский, психолог и спикер"
           fetchpriority="high">
       </div>
-      <span class="hero__cat mark mark--cat-profile" aria-hidden="true"></span>
+      <span class="hero__cat mark mark--cat" aria-hidden="true"></span>
 
       <div class="container hero__content">
-        <p class="hero__roles intro">Психолог · Лектор · Коуч</p>
+        <p class="hero__roles intro">Психолог · Спикер · Бизнес-тренер</p>
         <h1 class="hero__name title intro" style="--delay: .1s">Алексей<br>Барковский</h1>
         <p class="hero__tagline lead intro" style="--delay: .2s">Психолог, который называет вещи <span class="accent">своими именами</span></p>
         <p class="hero__sub muted intro" style="--delay: .3s">Лекции без воды, эзотерики и «просто полюби себя». Только то, что можно применить завтра утром.</p>
         <div class="hero__actions intro" style="--delay: .4s">
-          <a class="btn btn--primary" href="https://t.me/barkotey" data-invite>Пригласить спикером</a>
+          <a class="btn btn--primary" href="https://t.me/barkotey_psy" data-invite>Пригласить спикером</a>
           <a class="btn btn--ghost" href="#lectures">Темы лекций</a>
         </div>
       </div>
     </section>
 
     <!-- ===================== 2. ОБО МНЕ ===================== -->
-    <section class="section about" id="about">
-      <div class="container about__grid">
-        <div class="section__head about__head reveal">
+    <section class="section about" id="about" data-scroll>
+      <span class="glow" style="--x: 85%; --y: 8%" aria-hidden="true"></span>
+      <span class="glow glow--silver" style="--x: 10%; --y: 55%" aria-hidden="true"></span>
+
+      <div class="container">
+        <div class="section__head reveal">
           <span class="eyebrow">Обо мне</span>
-          <h2 class="title about__title">Видел, как ломается спокойствие. И&nbsp;как его <span class="accent">держат</span></h2>
+          <h2 class="title">Видел, как ломается спокойствие. И&nbsp;как его <span class="accent">держат</span></h2>
         </div>
 
-        <figure class="about__photo reveal">
-          <img
-            src="assets/img/about-700.jpg"
-            srcset="assets/img/about-700.jpg 700w, assets/img/about-1100.jpg 1100w"
-            sizes="(min-width: 960px) 40vw, 100vw"
-            width="700" height="933"
-            alt="Алексей Барковский держит пальцы у висков"
-            loading="lazy">
-        </figure>
+        <p class="about__intro" data-scroll="words">Я Алексей Барковский. Семь лет я работаю там, где у людей самые нервные дни в жизни: свадьбы, концерты, форумы, показы. Сначала держал зал с микрофоном, потом держал мероприятия за кулисами. Теперь помогаю людям держать собственную жизнь.</p>
 
-        <div class="about__body">
-          <p class="lead reveal">Я Алексей Барковский. Семь лет я работаю там, где у людей самые нервные дни в жизни: свадьбы, концерты, форумы, показы. Сначала держал зал с микрофоном, потом держал мероприятия за кулисами. Теперь помогаю людям держать собственную жизнь.</p>
-
-          <ul class="about__facts">
-            <li class="fact reveal"><span class="fact__num">7 лет</span><span class="fact__label">в ивенте: на сцене с микрофоном и за кулисами</span></li>
-            <li class="fact reveal" style="--delay: .08s"><span class="fact__num">12 лет</span><span class="fact__label">армейского рукопашного боя: паника — не приговор</span></li>
-            <li class="fact reveal" style="--delay: .16s"><span class="fact__num">2023</span><span class="fact__label">диплом психолога</span></li>
-            <li class="fact reveal" style="--delay: .24s"><span class="fact__num">1 книга</span><span class="fact__label">в работе</span></li>
-          </ul>
-
-          <details class="about__more reveal">
-            <summary class="btn btn--ghost">Читать полностью</summary>
-            <div class="about__full">
+        <div class="about__zones">
+          <article class="zone reveal">
+            <figure class="zone__photo">
+              <img src="assets/img/about-stage.jpg" width="800" height="1199" alt="Алексей Барковский смеётся, опираясь на каменную стену" loading="lazy">
+            </figure>
+            <div class="zone__body">
+              <h3 class="zone__label">Сцена</h3>
               <p>Я видел звёзд, у которых за минуту до выхода дрожат руки. Женихов, забывших клятву на середине фразы. Артистов, у которых посреди песни умер микрофон, а зал этого даже не заметил.</p>
-              <p>Я видел, как ломается спокойствие. И видел, как его держат.</p>
+              <p class="zone__accent">Я видел, как ломается спокойствие. И видел, как его держат.</p>
+            </div>
+          </article>
+
+          <article class="zone reveal">
+            <figure class="zone__photo">
+              <img src="assets/img/about-fear.jpg" width="800" height="1199" alt="Алексей Барковский идёт по набережной вдоль кирпичной стены" loading="lazy">
+            </figure>
+            <div class="zone__body">
+              <h3 class="zone__label">Шаг</h3>
               <p>12 лет армейского рукопашного боя научили меня, что паника — не приговор, а то, чем можно управлять. Парашютный спорт — что страх можно взять с собой и всё равно шагнуть. Сцена — что людям не нужны умные слова. Им нужны слова, которые работают.</p>
-              <p>В 2023 году я получил диплом психолога. Не чтобы консультировать, а чтобы объяснять: что на самом деле происходит у нас в голове, когда мир несётся быстрее, чем мы успеваем его переварить.</p>
+            </div>
+          </article>
+
+          <article class="zone reveal">
+            <figure class="zone__photo">
+              <img src="assets/img/about-mind.jpg" width="800" height="1066" alt="Алексей Барковский задумчиво касается виска" loading="lazy">
+            </figure>
+            <div class="zone__body">
+              <h3 class="zone__label">В голове</h3>
+              <p>В 2023 году я получил диплом психолога. Не только чтобы консультировать, но и чтобы объяснять: что на самом деле происходит у нас в голове, когда мир несётся быстрее, чем мы успеваем его переварить.</p>
               <p>Мои лекции — без воды, без эзотерики и без «просто полюби себя». Только то, что можно унести домой и применить завтра утром.</p>
+            </div>
+          </article>
+
+          <article class="zone reveal">
+            <figure class="zone__photo">
+              <img src="assets/img/about-why.jpg" width="800" height="1066" alt="Алексей Барковский сидит на стуле и смотрит в камеру" loading="lazy">
+            </figure>
+            <div class="zone__body">
+              <h3 class="zone__label">Зачем я здесь</h3>
               <p>Каждый инструмент, о котором я говорю, я сначала проверил на себе. Включая год, когда я отказался от всего, что мешало, и пересобрал себя с нуля.</p>
               <p>Да, я пишу книгу. Нет, она не про позитивное мышление.</p>
-              <p>Если вам нужен лектор, после которого люди думают, спорят и меняют что-то в своей жизни, — пишите.</p>
+              <p class="zone__accent">Если вам нужен спикер, после которого люди думают, спорят и меняют что-то в своей жизни, — пишите.</p>
+              <span class="zone__signature mark mark--signature" role="img" aria-label="Подпись: Алексей Барковский"></span>
             </div>
-          </details>
-
-          <span class="about__signature mark mark--signature reveal" role="img" aria-label="Подпись: Алексей Барковский"></span>
+          </article>
         </div>
       </div>
     </section>
 
+    <!-- Бегущая строка-разделитель (украшение) -->
+    <div class="ticker" data-scroll aria-hidden="true">
+      <p class="ticker__row">Смыслы · Границы · Выбор · Голос · Смыслы · Границы · Выбор · Голос · Смыслы · Границы ·</p>
+      <p class="ticker__row ticker__row--outline">Без воды · Без эзотерики · Без «просто полюби себя» · Без воды · Без эзотерики ·</p>
+    </div>
+
     <!-- ===================== 3. ТЕМЫ ЛЕКЦИЙ ===================== -->
-    <section class="section lectures" id="lectures">
+    <section class="section lectures" id="lectures" data-scroll>
+      <span class="glow" style="--x: 15%; --y: 30%" aria-hidden="true"></span>
+      <span class="watermark watermark--right mark mark--cat" aria-hidden="true"></span>
+
       <div class="container">
         <div class="section__head reveal">
           <span class="eyebrow">Лекции</span>
@@ -138,7 +162,7 @@
         <div class="lectures__list">
 
           <!-- ЛЕКЦИЯ: НАЧАЛО -->
-          <article class="lecture reveal">
+          <article class="lecture" style="--i: 0">
             <span class="lecture__num">01</span>
             <h3 class="lecture__title">Как раскрыть себя и найти смыслы в&nbsp;жизни</h3>
             <div class="lecture__block">
@@ -153,11 +177,11 @@
                 <li>Уйдёт с простым способом проверять решения на «моё / не моё»</li>
               </ul>
             </div>
-            <a class="btn btn--ghost lecture__btn" href="https://t.me/barkotey" data-invite="Как раскрыть себя и найти смыслы в жизни">Хочу эту лекцию</a>
+            <a class="btn btn--ghost lecture__btn" href="https://t.me/barkotey_psy" data-invite="Как раскрыть себя и найти смыслы в жизни">Выбрать эту лекцию</a>
           </article>
           <!-- ЛЕКЦИЯ: КОНЕЦ -->
 
-          <article class="lecture reveal" style="--delay: .1s">
+          <article class="lecture" style="--i: 1">
             <span class="lecture__num">02</span>
             <h3 class="lecture__title">Как преодолеть трудности и не сойти с&nbsp;ума</h3>
             <div class="lecture__block">
@@ -172,10 +196,10 @@
                 <li>Узнает, как держать режим и&nbsp;голову, когда всё валится из рук</li>
               </ul>
             </div>
-            <a class="btn btn--ghost lecture__btn" href="https://t.me/barkotey" data-invite="Как преодолеть трудности и не сойти с ума">Хочу эту лекцию</a>
+            <a class="btn btn--ghost lecture__btn" href="https://t.me/barkotey_psy" data-invite="Как преодолеть трудности и не сойти с ума">Выбрать эту лекцию</a>
           </article>
 
-          <article class="lecture reveal" style="--delay: .2s">
+          <article class="lecture" style="--i: 2">
             <span class="lecture__num">03</span>
             <h3 class="lecture__title">Тебя услышат. Хотят они этого или&nbsp;нет</h3>
             <div class="lecture__block">
@@ -190,7 +214,7 @@
                 <li>Научится говорить «нет» спокойно — без агрессии и&nbsp;оправданий</li>
               </ul>
             </div>
-            <a class="btn btn--ghost lecture__btn" href="https://t.me/barkotey" data-invite="Тебя услышат. Хотят они этого или нет">Хочу эту лекцию</a>
+            <a class="btn btn--ghost lecture__btn" href="https://t.me/barkotey_psy" data-invite="Тебя услышат. Хотят они этого или нет">Выбрать эту лекцию</a>
           </article>
 
         </div>
@@ -198,38 +222,41 @@
     </section>
 
     <!-- ===================== 4. ВИДЕО ===================== -->
-    <section class="section video" id="video">
+    <section class="section video" id="video" data-scroll>
+      <span class="glow glow--silver" style="--x: 80%; --y: 40%" aria-hidden="true"></span>
+
       <div class="container">
         <div class="section__head reveal">
           <span class="eyebrow">Видео</span>
           <h2 class="title">Лучше один раз <span class="accent">услышать</span></h2>
         </div>
 
-        <div class="video__frame reveal">
-          <!--
-            КАК ДОБАВИТЬ ВИДЕО ИЗ VK:
-            1. Откройте ролик в VK Видео → «Поделиться» → «Экспортировать» → скопируйте код.
-            2. Замените весь блок <div class="video__placeholder">…</div> ниже на этот код.
-            Пример кода:
-            <iframe src="https://vk.com/video_ext.php?oid=-000&id=000&hd=2" allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;" allowfullscreen></iframe>
-          -->
-          <div class="video__placeholder">
-            <img src="assets/img/video-poster.jpg" width="960" height="1280" alt="Алексей Барковский говорит в микрофон" loading="lazy">
-            <div class="video__soon">
-              <span class="video__badge">Скоро</span>
-              <p class="video__text">Запись выступления появится здесь совсем скоро</p>
-              <a class="btn btn--ghost" href="https://t.me/barkology" target="_blank" rel="noopener">Читать мой Telegram</a>
-            </div>
-          </div>
+        <!--
+          КАК ДОБАВИТЬ ВИДЕО ИЗ VK
+          1. Откройте ролик в VK Видео → «Поделиться» → «Экспортировать» → в коде найдите адрес после src="…"
+             (он выглядит так: https://vk.com/video_ext.php?oid=-000&id=000&hash=000).
+          2. Вставьте этот адрес в data-video="" ниже, между кавычками.
+          Готово: кнопка «Смотреть лекцию» станет активной и будет включать видео прямо на сайте.
+          Плеер VK загружается только после нажатия — сайт открывается быстрее.
+        -->
+        <div class="video__frame reveal" data-video="">
+          <img class="video__poster" src="assets/img/video-poster.jpg" width="960" height="1280" alt="Алексей Барковский говорит в микрофон" loading="lazy">
+          <button class="video__play" type="button" disabled>
+            <span class="video__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor"/></svg></span>
+            <span class="video__label">Смотреть лекцию</span>
+            <span class="video__soon">скоро</span>
+          </button>
         </div>
       </div>
     </section>
 
     <!-- ===================== 5. ФОРМАТЫ ВЫСТУПЛЕНИЙ ===================== -->
-    <section class="section formats" id="formats">
+    <section class="section formats" id="formats" data-scroll>
+      <span class="glow" style="--x: 90%; --y: 60%" aria-hidden="true"></span>
+
       <div class="container">
         <div class="section__head reveal">
-          <span class="eyebrow">Форматы</span>
+          <span class="eyebrow">Везде</span>
           <h2 class="title">Под вашу <span class="accent">площадку</span></h2>
         </div>
 
@@ -268,73 +295,117 @@
 
         <div class="formats__cta reveal">
           <p class="muted">Работаю офлайн и онлайн. Город, дату и формат обсудим в Telegram.</p>
-          <a class="btn btn--primary" href="https://t.me/barkotey" data-invite>Обсудить выступление</a>
+          <a class="btn btn--primary" href="https://t.me/barkotey_psy" data-invite>Обсудить выступление</a>
         </div>
       </div>
+    </section>
+
+    <!-- Фото-вставка с цитатой (украшение между блоками) -->
+    <section class="interlude" data-scroll aria-label="Цитата">
+      <img
+        class="interlude__img"
+        src="assets/img/interlude-900.jpg"
+        srcset="assets/img/interlude-900.jpg 900w, assets/img/interlude-1600.jpg 1600w"
+        sizes="100vw"
+        width="1600" height="1067"
+        alt="Алексей Барковский в тени под мостом, лицо скрыто воротником"
+        loading="lazy">
+      <blockquote class="container interlude__quote">
+        <p data-scroll="words">Людям не нужны умные слова. Им нужны слова, которые работают.</p>
+      </blockquote>
     </section>
 
     <!-- ===================== 6. ОТЗЫВЫ ===================== -->
     <!--
-      Пока внутри reviews__list нет ни одного отзыва, весь блок скрыт автоматически.
-
       КАК ДОБАВИТЬ ОТЗЫВ
-      1. Скопируйте шаблон ниже — всё между строками «ШАБЛОН ↓» и «ШАБЛОН ↑».
-      2. Вставьте его внутрь <div class="reviews__list"> … </div> (ниже, на место строки «сюда»).
-      3. Замените текст, имя и подпись.
-         Фото необязательно: если его нет — удалите строку с <img>.
-         Фото кладите в папку assets/img/reviews/ (квадратное, примерно 200×200).
-
-      ШАБЛОН ↓
-      <figure class="review reveal">
-        <blockquote class="review__text">Текст отзыва без кавычек.</blockquote>
-        <figcaption class="review__author">
-          <img class="review__photo" src="assets/img/reviews/imya.jpg" width="56" height="56" alt="" loading="lazy">
-          <span class="review__name">Имя Фамилия</span>
-          <span class="review__role">Кто это: организатор, слушатель, компания</span>
-        </figcaption>
-      </figure>
-      ШАБЛОН ↑
+      1. Сохраните скриншот в папку assets/img/reviews/ под следующим номером, например review-6.jpg
+         (уменьшить до 900 px в ширину: sips --resampleWidth 900 -s format jpeg -s formatOptions 72 исходник --out assets/img/reviews/review-6.jpg).
+      2. Скопируйте любую строку <li>…</li> внутри <ul class="reviews__track"> и поменяйте в ней
+         номер картинки, её размеры (width/height) и текст в alt — его читают незрячие посетители и поисковики.
+      Лента сама подстроится под количество отзывов.
     -->
-    <section class="section reviews" id="reviews">
+    <section class="section reviews" id="reviews" data-scroll>
+      <span class="glow" style="--x: 50%; --y: 55%" aria-hidden="true"></span>
+
       <div class="container">
         <div class="section__head reveal">
-          <span class="eyebrow">Отзывы</span>
+          <span class="eyebrow">Спасибо</span>
           <h2 class="title">Что говорят <span class="accent">после</span></h2>
-        </div>
-
-        <div class="reviews__list">
-          <!-- сюда: новые отзывы -->
+          <p class="section__lead muted">Настоящие сообщения от&nbsp;клиентов, без имён. Нажмите на&nbsp;отзыв, чтобы прочитать его крупно.</p>
         </div>
       </div>
+
+      <div class="reviews__marquee reveal">
+        <ul class="reviews__track">
+          <li><button class="review" type="button"><img src="assets/img/reviews/review-1.jpg" width="900" height="318" alt="Отзыв: «Спасибо тебе, очень многие моменты стали понятны. Главное понял для себя, что и как хочу делать дальше. У тебя очень круто получается донести суть и заставить задуматься. Это прям очень помогает»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><img src="assets/img/reviews/review-2.jpg" width="900" height="560" alt="Отзыв: «Слушай, сначала было как-то непонятно и страшно — первый раз у психолога, вообще без понятия, что делать будем. А потом поехало. Я иногда не знала, зачем мы это делаем и в чём соль, но сейчас, спустя три месяца, хочу сказать тебе огромное спасибо. Я полностью достигла своих целей, наконец-то нашла любящего мужчину и получила повышение на работе. Наша работа однозначно пошла на пользу»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><img src="assets/img/reviews/review-3.jpg" width="900" height="439" alt="Отзыв: «Честно, мне по-настоящему помогли консультации, очень здорово, что ты не даёшь совет, а направляешь к ответу, чтобы я сама приняла решение! Отдельное спасибо за то, что ты нашёл время созвониться ещё раз, именно после второго созвона у меня „упал камень с души“! Спасибо тебе большое!»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><img src="assets/img/reviews/review-4.jpg" width="900" height="554" alt="Отзыв: «Пишу тебе поделиться радостью! Я наконец-то решила вопрос с сестрой! Это такое облегчение, что слов нет. Как ты и говорил, самое сложное — решиться. А на деле всё прошло спокойно, мы поговорили, она меня услышала и уехала. Спасибо тебе большое! Сама я бы точно тянула до последнего и не решилась бы»" loading="lazy"></button></li>
+          <li><button class="review" type="button"><img src="assets/img/reviews/review-5.jpg" width="900" height="720" alt="Отзыв: «Лёша! У нас была с тобой всего одна консультация, но она перевернула мне мозг. Я стала отслеживать своё поведение, что я делаю не так, стала разговаривать со своим парнем, говорить о том, чего я хочу, что мне важно! Съехала от родителей в конце концов! Очень благодарна тебе! Признаюсь, поначалу я думала, что это всё фигня, но сейчас я понимаю, что это реально работает»" loading="lazy"></button></li>
+        </ul>
+      </div>
+
+      <dialog class="lightbox" aria-label="Отзыв крупно">
+        <button class="lightbox__close" type="button" aria-label="Закрыть">×</button>
+        <img class="lightbox__img" src="" alt="">
+      </dialog>
     </section>
 
-    <!-- ===================== 7. СКОРО: КНИГА И ПРОДУКТЫ ===================== -->
-    <section class="section soon" id="soon">
-      <span class="soon__cat mark mark--cat-profile" aria-hidden="true"></span>
+    <!-- ===================== 7. КНИГА И ПРОДУКТЫ ===================== -->
+    <section class="section book" id="book" data-scroll>
+      <span class="glow" style="--x: 30%; --y: 22%" aria-hidden="true"></span>
+      <span class="watermark watermark--left mark mark--cat" aria-hidden="true"></span>
 
       <div class="container">
         <div class="section__head reveal">
-          <span class="eyebrow">Скоро</span>
+          <span class="eyebrow">Книга</span>
           <h2 class="title">Да, я пишу <span class="accent">книгу</span></h2>
+          <p class="section__lead muted">Нет, она не про позитивное мышление.</p>
         </div>
 
-        <article class="book reveal">
-          <div class="book__photo">
-            <img
-              src="assets/img/book-800.jpg"
-              srcset="assets/img/book-800.jpg 800w, assets/img/book-1300.jpg 1300w"
-              sizes="(min-width: 960px) 55vw, 100vw"
-              width="800" height="533"
-              alt="Силуэт Алексея Барковского, лицо скрыто воротником"
-              loading="lazy">
+        <div class="book__main">
+          <!-- Объёмная книга: поворачивается при прокрутке -->
+          <div class="book3d-stage" data-scroll>
+            <div class="book3d">
+              <span class="book3d__back" aria-hidden="true"></span>
+              <span class="book3d__pages" aria-hidden="true"></span>
+              <span class="book3d__spine" aria-hidden="true"><span>Инструкция к жизни · Алексей Барковский</span></span>
+              <img class="book3d__cover" src="assets/img/book-cover.jpg" width="800" height="1131" alt="Обложка книги «Инструкция к жизни», автор Алексей Барковский">
+            </div>
           </div>
-          <div class="book__body">
+
+          <div class="book__info reveal">
             <span class="badge">В работе</span>
-            <p class="book__lead">Нет, она не про позитивное мышление.</p>
-            <p class="muted">Про то, что на самом деле происходит у нас в голове — и что с этим делать. Новости о книге первыми появятся в Telegram-канале: там же лёгкий научпоп с ноткой сарказма.</p>
-            <a class="btn btn--primary" href="https://t.me/barkology" target="_blank" rel="noopener">Подписаться на канал</a>
+            <h3 class="book__name">Инструкция к&nbsp;жизни</h3>
+            <p class="book__desc">Руководство пользователя, а не научное исследование. Простым языком — о том, что, на мой взгляд, должен знать и понимать каждый человек. Конкретные ответы на два вопроса:</p>
           </div>
-        </article>
+        </div>
+
+        <div class="book__qa">
+          <div class="qa">
+            <p class="qa__label reveal">почему?</p>
+            <ul class="qa__list">
+              <li class="reveal">Почему все говорят, что нужно «проработать родителей»?</li>
+              <li class="reveal">Почему в жизни случаются моменты, которые делают нас несчастными?</li>
+              <li class="reveal">Почему люди так отличаются друг от друга?</li>
+            </ul>
+          </div>
+          <div class="qa">
+            <p class="qa__label reveal">как?</p>
+            <ul class="qa__list">
+              <li class="reveal">Как выстраивать здоровые личные и деловые отношения?</li>
+              <li class="reveal">Как понять, что вас используют?</li>
+              <li class="reveal">Как выстроить свои личные границы?</li>
+              <li class="reveal">Как отследить в себе чужие желания, паттерны и установки?</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="book__final" data-scroll="words">И главное — как понять, что ваша жизнь только в ваших руках, и решиться на тот самый страшный выбор: в пользу того, чего по-настоящему хочется, а не очередного дня сурка.</p>
+
+        <div class="book__cta reveal">
+          <a class="btn btn--primary" href="https://t.me/barkology" target="_blank" rel="noopener">Узнать о выходе первым</a>
+        </div>
 
         <!--
           ПРОДУКТЫ. Пока карточки закрыты (класс product-card--locked).
@@ -347,7 +418,7 @@
         <div class="products">
           <article class="product-card product-card--locked reveal">
             <div class="product-card__cover" aria-hidden="true">
-              <span class="mark mark--cat-face"></span>
+              <span class="mark mark--cat"></span>
               <svg class="product-card__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
             </div>
             <div class="product-card__body">
@@ -359,7 +430,7 @@
 
           <article class="product-card product-card--locked reveal" style="--delay: .1s">
             <div class="product-card__cover" aria-hidden="true">
-              <span class="mark mark--cat-face"></span>
+              <span class="mark mark--cat"></span>
               <svg class="product-card__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
             </div>
             <div class="product-card__body">
@@ -371,7 +442,7 @@
 
           <article class="product-card product-card--locked reveal" style="--delay: .2s">
             <div class="product-card__cover" aria-hidden="true">
-              <span class="mark mark--cat-face"></span>
+              <span class="mark mark--cat"></span>
               <svg class="product-card__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
             </div>
             <div class="product-card__body">
@@ -384,81 +455,112 @@
       </div>
     </section>
 
-    <!-- ===================== 8. КОНТАКТЫ ===================== -->
-    <section class="section contacts" id="contacts">
-      <div class="container contacts__grid">
-        <figure class="contacts__photo reveal">
-          <img
-            src="assets/img/contacts-700.jpg"
-            srcset="assets/img/contacts-700.jpg 700w, assets/img/contacts-1100.jpg 1100w"
-            sizes="(min-width: 960px) 40vw, 100vw"
-            width="700" height="1049"
-            alt="Алексей Барковский смеётся"
-            loading="lazy">
-        </figure>
+    <!-- ===================== 8. TELEGRAM-КАНАЛ ===================== -->
+    <section class="section channel" id="channel" data-scroll>
+      <span class="glow glow--silver" style="--x: 75%; --y: 30%" aria-hidden="true"></span>
 
-        <div class="contacts__body">
-          <div class="section__head reveal">
-            <span class="eyebrow">Контакты</span>
-            <h2 class="title">Давайте <span class="accent">поговорим</span></h2>
-            <p class="section__lead muted">Если вам нужен лектор, после которого люди думают, спорят и&nbsp;меняют что-то в своей жизни, — пишите.</p>
-          </div>
-
-          <a class="btn btn--primary contacts__cta reveal" href="https://t.me/barkotey" data-invite>Пригласить спикером</a>
-
-          <ul class="contacts__list reveal">
-            <li>
-              <a class="contact" href="https://t.me/barkotey" target="_blank" rel="noopener">
-                <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>
-                <span class="contact__body"><span class="contact__label">Telegram</span><span class="contact__value">@barkotey</span></span>
-                <span class="contact__arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="contact" href="mailto:barkotey.psy@gmail.com?subject=%D0%9F%D1%80%D0%B8%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D1%8C">
-                <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
-                <span class="contact__body"><span class="contact__label">Почта</span><span class="contact__value">barkotey.psy@gmail.com</span></span>
-                <span class="contact__arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="contact" href="https://t.me/barkology" target="_blank" rel="noopener">
-                <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"><path d="M4 10v4h3l6 4V6L7 10z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>
-                <span class="contact__body"><span class="contact__label">Telegram-канал</span><span class="contact__value">@barkology</span></span>
-                <span class="contact__arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="contact" href="https://vk.com/barkotey" target="_blank" rel="noopener">
-                <span class="contact__icon contact__icon--text" aria-hidden="true">VK</span>
-                <span class="contact__body"><span class="contact__label">ВКонтакте</span><span class="contact__value">vk.com/barkotey</span></span>
-                <span class="contact__arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="contact" href="https://vk.com/barkology" target="_blank" rel="noopener">
-                <span class="contact__icon contact__icon--text" aria-hidden="true">VK</span>
-                <span class="contact__body"><span class="contact__label">Паблик ВКонтакте</span><span class="contact__value">vk.com/barkology</span></span>
-                <span class="contact__arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-            <li>
-              <a class="contact" href="https://www.instagram.com/barkotey/" target="_blank" rel="noopener">
-                <span class="contact__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
-                <span class="contact__body"><span class="contact__label">Instagram*</span><span class="contact__value">@barkotey</span></span>
-                <span class="contact__arrow" aria-hidden="true">↗</span>
-              </a>
-            </li>
-          </ul>
-
-          <p class="contacts__note">* Instagram принадлежит компании Meta, признанной экстремистской и&nbsp;запрещённой в&nbsp;РФ.</p>
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow">Канал</span>
+          <h2 class="title">Читайте <span class="accent">Barkology</span></h2>
         </div>
+
+        <a class="channel__card reveal" href="https://t.me/barkology" target="_blank" rel="noopener">
+          <img class="channel__photo" src="assets/img/channel.jpg" width="800" height="1199" alt="Алексей Барковский на фоне неба" loading="lazy">
+          <span class="channel__body">
+            <span class="channel__head">
+              <span class="channel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>
+              <span><span class="channel__name">BARKOLOGY</span><span class="channel__handle">Telegram-канал · @barkology</span></span>
+            </span>
+            <span class="channel__text">Лёгкий науч-поп с&nbsp;ноткой сарказма. Разборы, наблюдения, анонсы лекций — и&nbsp;новости книги первыми.</span>
+            <span class="btn btn--primary channel__btn">Подписаться на канал</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===================== 9. КОНТАКТЫ ===================== -->
+    <section class="section contacts" id="contacts" data-scroll>
+      <span class="glow" style="--x: 50%; --y: 60%" aria-hidden="true"></span>
+      <span class="watermark watermark--right mark mark--cat" aria-hidden="true"></span>
+
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="eyebrow eyebrow--long">Следите за обновлениями</span>
+          <h2 class="title">Где меня <span class="accent">найти</span></h2>
+        </div>
+
+        <!-- Ссылки в «экране iPhone». Время на часах — 22:22 -->
+        <div class="phone-stage" data-scroll>
+          <div class="phone">
+            <div class="phone__screen">
+              <div class="phone__status" aria-hidden="true">
+                <span class="phone__time">22:22</span>
+                <span class="phone__island"></span>
+                <span class="phone__sys">
+                  <svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+                  <svg viewBox="0 0 16 12"><path d="M8 2.2c2.4 0 4.6.9 6.2 2.5l1.3-1.4A10.6 10.6 0 0 0 8 .3 10.6 10.6 0 0 0 .5 3.3l1.3 1.4A8.7 8.7 0 0 1 8 2.2Zm0 3.7c1.4 0 2.7.5 3.6 1.4l1.3-1.4A7 7 0 0 0 8 4a7 7 0 0 0-4.9 1.9l1.3 1.4c.9-.9 2.2-1.4 3.6-1.4Zm0 3.6c.5 0 1 .2 1.3.5L8 11.8 6.7 10c.3-.3.8-.5 1.3-.5Z"/></svg>
+                  <svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="22" height="11" rx="3.2" fill="none" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="16" height="8" rx="2"/><path d="M24.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" opacity=".5"/></svg>
+                </span>
+              </div>
+
+              <div class="phone__profile">
+                <img class="phone__avatar" src="assets/img/avatar.jpg" width="240" height="240" alt="" loading="lazy">
+                <p class="phone__name">Алексей Барковский</p>
+                <p class="phone__role">Психолог · Спикер · Бизнес-тренер</p>
+              </div>
+
+              <ul class="phone__links">
+                <li style="--i: 0">
+                  <a class="app-row" href="https://www.instagram.com/barkotey/" target="_blank" rel="noopener">
+                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".7" fill="currentColor"/></svg></span>
+                    <span class="app-row__text"><span class="app-row__title">Instagram*</span><span class="app-row__sub">@barkotey</span></span>
+                    <span class="app-row__chevron" aria-hidden="true"></span>
+                  </a>
+                </li>
+                <li style="--i: 1">
+                  <a class="app-row" href="https://t.me/barkotey_psy" target="_blank" rel="noopener">
+                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21.5 4 2.5 11.5l6.5 2.2 2.3 6.3 3.4-4.2 5 3.7z"/><path d="m9 13.7 8.6-6.4-6.3 8.6"/></svg></span>
+                    <span class="app-row__text"><span class="app-row__title">Telegram</span><span class="app-row__sub">@barkotey_psy</span></span>
+                    <span class="app-row__chevron" aria-hidden="true"></span>
+                  </a>
+                </li>
+                <li style="--i: 2">
+                  <a class="app-row" href="https://t.me/barkology" target="_blank" rel="noopener">
+                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4 10v4h3l6 4V6L7 10z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/></svg></span>
+                    <span class="app-row__text"><span class="app-row__title">Telegram-канал</span><span class="app-row__sub">@barkology</span></span>
+                    <span class="app-row__chevron" aria-hidden="true"></span>
+                  </a>
+                </li>
+                <li style="--i: 3">
+                  <a class="app-row" href="https://vk.com/barkology" target="_blank" rel="noopener">
+                    <span class="app-row__icon app-row__icon--text" aria-hidden="true">VK</span>
+                    <span class="app-row__text"><span class="app-row__title">Паблик ВКонтакте</span><span class="app-row__sub">vk.com/barkology</span></span>
+                    <span class="app-row__chevron" aria-hidden="true"></span>
+                  </a>
+                </li>
+                <li style="--i: 4">
+                  <a class="app-row" href="mailto:barkotey.psy@gmail.com?subject=%D0%9F%D1%80%D0%B8%D0%B3%D0%BB%D0%B0%D1%88%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B2%D1%8B%D1%81%D1%82%D1%83%D0%BF%D0%B8%D1%82%D1%8C">
+                    <span class="app-row__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg></span>
+                    <span class="app-row__text"><span class="app-row__title">Почта</span><span class="app-row__sub">barkotey.psy@gmail.com</span></span>
+                    <span class="app-row__chevron" aria-hidden="true"></span>
+                  </a>
+                </li>
+              </ul>
+
+              <a class="btn btn--primary phone__cta" href="https://t.me/barkotey_psy" data-invite>Пригласить спикером</a>
+              <span class="phone__home" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <p class="contacts__note">* Instagram принадлежит компании Meta, признанной экстремистской и&nbsp;запрещённой в&nbsp;РФ.</p>
       </div>
     </section>
 
   </main>
 
-  <!-- ===================== 9. ПОДВАЛ ===================== -->
+  <!-- ===================== 10. ПОДВАЛ ===================== -->
   <footer class="footer">
     <div class="container">
       <span class="footer__bark mark mark--bark" aria-hidden="true"></span>
